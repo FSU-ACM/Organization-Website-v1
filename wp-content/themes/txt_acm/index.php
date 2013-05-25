@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ *
+ * @package WordPress
+ * @subpackage TXT_ACM
+ * @since TXT 1.0
+ */
+
+get_header(); ?>
 
 <?php if ( have_posts() ) : ?>
 <?php while ( have_posts() ) : the_post(); ?>
