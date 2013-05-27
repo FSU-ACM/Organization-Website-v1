@@ -54,7 +54,7 @@ get_header(); ?>
                                     
                                     <!-- Feature -->
                                         <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="images/pic01.jpg" alt="" /></a>
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic01.jpg" alt="" /></a>
                                             <h3><a href="#">Look Up</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
@@ -68,7 +68,7 @@ get_header(); ?>
                                     
                                     <!-- Feature -->
                                         <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="images/pic02.jpg" alt="" /></a>
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic02.jpg" alt="" /></a>
                                             <h3><a href="#">Look Down</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
@@ -82,7 +82,7 @@ get_header(); ?>
                                     
                                     <!-- Feature -->
                                         <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="images/pic03.jpg" alt="" /></a>
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic03.jpg" alt="" /></a>
                                             <h3><a href="#">Examine Room</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
@@ -96,7 +96,7 @@ get_header(); ?>
                                     
                                     <!-- Feature -->
                                         <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="images/pic04.jpg" alt="" /></a>
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic04.jpg" alt="" /></a>
                                             <h3><a href="http://getlamp.com">Get Lamp</a></h3>
                                             <p>
                                                 Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
@@ -144,7 +144,7 @@ get_header(); ?>
                                                         <li class="comments"><a href="#">8</a></li>
                                                     </ul>
                                                 </header>
-                                                <a href="#" class="image image-full"><img src="images/pic05.jpg" alt="" /></a>
+                                                <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic05.jpg" alt="" /></a>
                                                 <p>
                                                     Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in lectus. Praesent 
                                                     semper mod quis eget mi. Etiam sed ante risus aliquam erat et volutpat. Praesent a 
@@ -224,6 +224,5 @@ get_header(); ?>
     </div>
 </div>
 <!-- /Main -->
-
 
 <?php get_footer(); ?>

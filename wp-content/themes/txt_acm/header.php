@@ -24,7 +24,20 @@
 <!--[if lte IE 9]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie9.css" /><![endif]-->
 <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie8.css" /><![endif]-->
 <!--[if lte IE 7]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie7.css" /><![endif]-->
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#nav').localScroll(800);
+	//.parallax(xPosition, speedFactor, outerHeight) options:
+	//xPosition - Horizontal position of the element
+	//inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+	//outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+	$('#header').parallax("50%", 0.1);
+	$('#banner-wrapper').parallax("50%", 0.1);
+	$('#banner').parallax("50%", 2.0);
+	// $('.bg').parallax("50%", 0.4);
+	$('#main').parallax("70%", 0.3);
+})
+</script>
 </head>
 
 <body class="homepage">
@@ -33,8 +46,8 @@
 	<header id="header">
 		<div class="logo">
 			<div>
-				<h1><a href="#" class="mobileUI-site-name">ACM@FSU</a></h1>
-				<!-- <span class="byline">association for computational machinery</span> -->
+				<h1><a href="/" class="mobileUI-site-name"><?php bloginfo('name'); ?></a></h1>
+				<span class="byline"> | <?php bloginfo('description'); ?></span>
 			</div>
 		</div>
 	</header>
@@ -45,12 +58,12 @@
 	<?php wp_nav_menu( array( 'theme_location' => 'primary', 
 							  'menu_class' => 'nav-menu',
 							  'container' => '' 
-					 		) 
-					 ); 
-	?>
+					 		)); ?>
 	</nav>
 <!-- /Nav -->
 
+<!-- Display banner only on home template -->
+<?php if ( is_page_template('home.php') ) { ?>
 <!-- Banner -->
 	<div id="banner-wrapper">
 		<section id="banner">
@@ -60,6 +73,7 @@
 		</section>
 	</div>
 <!-- /Banner -->
+<?php } ?>
 
 <!-- Main -->
 	<div id="main-wrapper" >
