@@ -43,7 +43,7 @@
 
 					<!-- Copyright -->
 						<div id="copyright">
-							&copy; 2012 Untitled Something | Images: <a href="http://fotogrph.com">Fotogrph</a> + <a href="http://iconify.it">Iconify.it</a> | Design: <a href="http://html5up.net/">HTML5 Up!</a>
+							&copy; <?php the_time('Y') ?> ACM@FSU | Images: &copy; The Florida State University | Design: <a href="http://html5up.net/">HTML5 Up!</a>
 						</div>
 					<!-- /Copyright -->
 
