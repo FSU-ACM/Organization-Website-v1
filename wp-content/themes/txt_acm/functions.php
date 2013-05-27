@@ -1,6 +1,6 @@
 <?php
 /**
- * TXT_ACM functions and definitions.
+ * TXT_ACM functions and definitions. "I added this for fun"
  *
  * Sets up the theme and provides some helper functions, which are used
  * in the theme as custom template tags. Others are attached to action and
