@@ -139,7 +139,7 @@ function txt_acm_scripts_styles() {
 	/*
 	 * Loads the Internet Explorer specific stylesheet.
 	 */
-	wp_enqueue_style( 'txt_acm-ie', get_template_directory_uri() . '/css/ie.css', array( 'txt_acm-style' ), '20121010' );
+	wp_enqueue_style( 'txt_acm-ie', get_template_directory_uri() . '/css/ie9.css', array( 'txt_acm-style' ), '20121010' );
 	$wp_styles->add_data( 'txt_acm-ie', 'conditional', 'lt IE 9' );
 }
 add_action( 'wp_enqueue_scripts', 'txt_acm_scripts_styles' );
@@ -431,12 +431,12 @@ function txt_acm_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'txt_acm_customize_register' );
 
-/**
- * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
- *
- * @since TXT 1.0
- */
-function txt_acm_customize_preview_js() {
-	wp_enqueue_script( 'txt_acm-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
-}
-add_action( 'customize_preview_init', 'txt_acm_customize_preview_js' );
+// /**
+//  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+//  *
+//  * @since TXT 1.0
+//  */
+// function txt_acm_customize_preview_js() {
+// 	wp_enqueue_script( 'txt_acm-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
+// }
+// add_action( 'customize_preview_init', 'txt_acm_customize_preview_js' );

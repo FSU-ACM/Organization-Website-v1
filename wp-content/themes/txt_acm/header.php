@@ -69,7 +69,7 @@ $(document).ready(function(){
 		<section id="banner">
 			<h2>Not a member?</h2>
 			<!-- <span class="byline">signing up is simple.</span> -->
-			<a href="#" class="button">Sign Up Here</a>
+			<a href="https://studentgroups.fsu.edu/account/logonrequired?ReturnUrl=%2forganization%2fassociationofcomputingmachinery%2fhome%2fjoin" class="button" target="blank">Sign Up Here</a>
 		</section>
 	</div>
 <!-- /Banner -->
