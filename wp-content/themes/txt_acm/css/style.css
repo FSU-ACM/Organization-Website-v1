@@ -331,14 +331,14 @@ Author URI: fsu.acm.oeg
 
 				ul.special li:hover a
 				{
-					background: #b9d2ce;
+					background: #CDC092;
 				}
 
 			ul.special a
 			{
 				display: block;
 				position: relative;
-				background: #c1cac5;
+				background: #450115;
 				width: 12em;
 				height: 12em;
 				border-radius: 6em;

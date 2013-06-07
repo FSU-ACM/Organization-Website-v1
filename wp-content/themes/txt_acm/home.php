@@ -12,6 +12,36 @@ Template Name: Home Page
 
 get_header(); ?>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#nav').localScroll(800);
+        //.parallax(xPosition, speedFactor, outerHeight) options:
+        //xPosition - Horizontal position of the element
+        //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+        //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+        $('#header').parallax("50%", 0.1);
+        $('#banner-wrapper').parallax("50%", 0.1);
+        $('#banner').parallax("50%", 2.0);
+        // $('.bg').parallax("50%", 0.4);
+        $('#main').parallax("70%", 0.3);
+    })
+
+    $(document).ready(function(){
+        // $('#first_flyin_trigger').click(function () {
+        //     $('#first_flyin:hidden:first').fadeIn('slow');
+
+        //     // .effect("bounce", { direction:'left', times:5 }, 300);
+        // });
+
+        $("a.battery").hover( function () {
+            $("#first_flyin").fadeIn('slow');
+        }, function () {
+        $("#first_flyin").fadeOut('slow');
+      }
+    );
+    })
+</script>
+
 <!-- Main -->
 <div id="main-wrapper" >
     <div id="main" class="5grid-layout">
@@ -24,11 +54,15 @@ get_header(); ?>
         <div class="12u">
                     <section class="is-highlight">
                         <ul class="special">
-                            <li><a href="#" class="battery">Battery</a></li>
+                            <li>
+                                <a href="#" id="first_flyin_trigger" class="battery">Battery</a>
+                            </li>
                             <li><a href="#" class="tablet">Tablet</a></li>
                             <li><a href="#" class="flask">Flask</a></li>
                             <li><a href="#" class="chart">Pie Chart?</a></li>
                         </ul>
+                        
+                        <!-- static element -->
                         <header>
                             <h2>You check the contents of your inventory</h2>
                             <span class="byline">it contains: many items that seem important but actually aren’t</span>
@@ -37,6 +71,57 @@ get_header(); ?>
                             Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
                             ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
                         </p>
+
+                        <!-- first fly in element -->
+                        <div id="first_flyin">
+                            <header>
+                                <h2>First Title of Fly In</h2>
+                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                            </header>
+                            <p>
+                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
+                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                            </p>
+                        </div>
+
+                        <!-- GET FIRST FLYIN WORKING THEN ADD THESE
+                        <!-- second fly in element --
+                        <div id="second_flyin">
+                            <header>
+                                <h2>Second Title of Fly In</h2>
+                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                            </header>
+                            <p>
+                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
+                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                            </p>
+                        </div>
+
+                        <!-- third fly in element --
+                        <div id="third_flyin">
+                            <header>
+                                <h2>Third Title of Fly In</h2>
+                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                            </header>
+                            <p>
+                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
+                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                            </p>
+                        </div>
+
+                        <!-- fourth fly in element --
+                        <div id="fourth_flyin">
+                            <header>
+                                <h2>Fourth Title of Fly In</h2>
+                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                            </header>
+                            <p>
+                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
+                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                            </p>
+                        </div> -->
+
+
                     </section>
                 <!-- /Highlight -->
 

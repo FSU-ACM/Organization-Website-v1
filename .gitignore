@@ -15,4 +15,3 @@ sitemap.xml.gz
 sftp-config.json*
 *.sublime-*
 .DS_Store
-.htaccess
