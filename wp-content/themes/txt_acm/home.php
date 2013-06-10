@@ -12,127 +12,105 @@ Template Name: Home Page
 
 get_header(); ?>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#nav').localScroll(800);
-        //.parallax(xPosition, speedFactor, outerHeight) options:
-        //xPosition - Horizontal position of the element
-        //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
-        //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
-        $('#header').parallax("50%", 0.1);
-        $('#banner-wrapper').parallax("50%", 0.1);
-        $('#banner').parallax("50%", 2.0);
-        // $('.bg').parallax("50%", 0.4);
-        $('#main').parallax("70%", 0.3);
-    })
-
-    $(document).ready(function(){
-        // $('#first_flyin_trigger').click(function () {
-        //     $('#first_flyin:hidden:first').fadeIn('slow');
-
-        //     // .effect("bounce", { direction:'left', times:5 }, 300);
-        // });
-
-        $("a.battery").hover( function () {
-            $("#first_flyin").fadeIn('slow');
-        }, function () {
-        $("#first_flyin").fadeOut('slow');
-      }
-    );
-    })
-</script>
-
 <!-- Main -->
 <div id="main-wrapper" >
     <div id="main" class="5grid-layout">
         <div class="row">
             <div class="12u">
 
+<style type="text/css">
+
+    .fly {
+        min-height: 220px;
+    }
+
+</style>
+
 <!-- Highlight -->
 <div id="main" class="5grid-layout">
     <div class="row">
         <div class="12u">
-                    <section class="is-highlight">
-                        <ul class="special">
-                            <li>
-                                <a href="#" id="first_flyin_trigger" class="battery">Battery</a>
-                            </li>
-                            <li><a href="#" class="tablet">Tablet</a></li>
-                            <li><a href="#" class="flask">Flask</a></li>
-                            <li><a href="#" class="chart">Pie Chart?</a></li>
-                        </ul>
-                        
-                        <!-- static element -->
-                        <header>
-                            <h2>You check the contents of your inventory</h2>
-                            <span class="byline">it contains: many items that seem important but actually aren’t</span>
-                        </header>
-                        <p>
-                            Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                            ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
-                        </p>
+            <section class="is-highlight">
+                <ul class="special">
+                    <li><a href="#" id="first_trigger" class="battery">Battery</a></li>
+                    <li><a href="#" id="second_trigger" class="tablet">Tablet</a></li>
+                    <li><a href="#" id="third_trigger" class="flask">Flask</a></li>
+                    <li><a href="#" id="fourth_trigger" class="chart">Pie Chart?</a></li>
+                </ul>
+                
+                <!-- static element -->
+                <div id="static_fly" class="fly">
+                    <header>
+                        <h2>Welcome to fsu.acm.org</h2>
+                        <span class="byline">The ACM Chapter for The Florida State University.</span>
+                    </header>
+                    <p>
+                        ACM, the world’s largest educational and scientific computing society, delivers resources that advance computing<br /> 
+                        as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members <br />
+                        and the computing profession with leading-edge publications, conferences, and career resources.
+                    </p>
+                </div>
 
-                        <!-- first fly in element -->
-                        <div id="first_flyin">
-                            <header>
-                                <h2>First Title of Fly In</h2>
-                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
-                            </header>
-                            <p>
-                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
-                            </p>
-                        </div>
+                <!-- first fly in element -->
+                <div id="first_flyin" class="fly" style="display:none">
+                    <header>
+                        <h2>FSU Computer Science</h2>
+                        <span class="byline">ACM has a very close relationship to the Computer Science Department.</span>
+                    </header>
+                    <p>
+                        We host bi-annual events such as a Programming Contest and Picnic as well as social events including game nights. 
+                    </p>
+                </div>
 
-                        <!-- GET FIRST FLYIN WORKING THEN ADD THESE
-                        <!-- second fly in element --
-                        <div id="second_flyin">
-                            <header>
-                                <h2>Second Title of Fly In</h2>
-                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
-                            </header>
-                            <p>
-                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
-                            </p>
-                        </div>
+                <!-- second fly in element -->
+                <div id="second_flyin" class="fly" style="display:none">
+                    <header>
+                        <h2>Network of Student Professionals</h2>
+                        <span class="byline">Brought together by common interests.</span>
+                    </header>
+                    <p>
+                        ACM not only helps students assist each other academically, we also try to help students find jobs.
+                    </p>
+                </div>
 
-                        <!-- third fly in element --
-                        <div id="third_flyin">
-                            <header>
-                                <h2>Third Title of Fly In</h2>
-                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
-                            </header>
-                            <p>
-                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
-                            </p>
-                        </div>
+                <!-- third fly in element -->
+                <div id="third_flyin" class="fly" style="display:none">
+                    <header>
+                        <h2>Third Title of Fly In</h2>
+                        <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                    </header>
+                    <p>
+                        Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
+                        ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                    </p>
+                </div>
 
-                        <!-- fourth fly in element --
-                        <div id="fourth_flyin">
-                            <header>
-                                <h2>Fourth Title of Fly In</h2>
-                                <span class="byline">it contains: many items that seem important but actually aren’t</span>
-                            </header>
-                            <p>
-                                Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                                ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
-                            </p>
-                        </div> -->
+                <!-- fourth fly in element -->
+                <div id="fourth_flyin" class="fly" style="display:none">
+                    <header>
+                        <h2>Fourth Title of Fly In</h2>
+                        <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                    </header>
+                    <p>
+                        Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
+                        ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                    </p>
+                </div>
 
+            </section>
+        <!-- /Highlight -->
 
-                    </section>
-                <!-- /Highlight -->
-
-            </div>
         </div>
+    </div>
+
+        <br class="clear" />
+
         <div class="row">
             <div class="12u">
 
                 <!-- Features -->
                     <section class="is-features">
-                        <h2 class="major"><span>Valid Commands</span></h2>
+                        <h2 class="major"><span>The Latest</span></h2>
                         <div class="5grid">
                             <div class="row">
                                 <div class="3u">

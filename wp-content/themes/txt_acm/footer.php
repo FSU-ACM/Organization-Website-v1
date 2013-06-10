@@ -52,13 +52,87 @@
 		<!-- /Footer -->
 
 <!-- load le javascript -->
-<!-- <script src="js/jquery-1.8.3.min.js"></script> -->
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.parallax-1.1.3.js"></script>
+<!--<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.parallax-1.1.3.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.localscroll-1.2.7-min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.scrollTo-1.4.2-min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.scrollTo-1.4.2-min.js"></script>-->
 <script src="<?php echo get_template_directory_uri(); ?>/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarOverlaid=1"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // $('#nav').localScroll(800);
+
+        // // .parallax(xPosition, speedFactor, outerHeight) options:
+        // // xPosition - Horizontal position of the element
+        // // inertia - speed to move relative to vertical scroll.
+
+        // // Example: 0.1 is one tenth the speed of scrolling, 
+        // // 2 is twice the speed of scrolling
+        // // outerHeight (true/false) - 
+        // // Whether or not jQuery should use it's outerHeight option to 
+        // // determine when a section is in the viewport
+
+        // $('#header').parallax("50%", 0.1);
+        // $('#banner-wrapper').parallax("50%", 0.1);
+        // $('#banner').parallax("50%", 2.0);
+        // // $('.bg').parallax("50%", 0.4);
+        // $('#main').parallax("70%", 0.3);
+
+			
+			$("#banner-wrapper").scroll(function () {
+				s = $("#banner-wrapper").scrollTop();
+				$("#banner-wrapper img").css("-webkit-transform","translateY(" +  (s/5)  + "px)");
+			})
+
+
+        <?php if ( is_front_page() ) { ?>
+		// load the following only on homepage
+		// this js controls the animations and user interactivity for 
+		// home page specific events
+
+	        $("#first_trigger").hover(
+	          function () {
+	          	$('#static_fly').hide();
+	          	$('#first_flyin').show();
+	          },
+	          function () {
+		         $('#first_flyin').hide();
+	          	$('#static_fly').show();
+	        })
+	      	$("#second_trigger").hover(
+	          function () {
+	          	$('#static_fly').hide();
+	          	$('#second_flyin').show();
+	          },
+	          function () {
+		         $('#second_flyin').hide();
+	          	$('#static_fly').show();
+	        })
+	        $("#third_trigger").hover(
+	          function () {
+	          	$('#static_fly').hide();
+	          	$('#third_flyin').show();
+	          },
+	          function () {
+		         $('#third_flyin').hide();
+	          	$('#static_fly').show();
+	        })
+	        $("#fourth_trigger").hover(
+	          function () {
+	          	$('#static_fly').hide();
+	          	$('#fourth_flyin').show();
+	          },
+	          function () {
+		         $('#fourth_flyin').hide();
+	          	$('#static_fly').show();
+	        })
+
+		<? } ?> // end home page specific js
+    });
+
+</script>
+
 
 	</body>
 </html>
