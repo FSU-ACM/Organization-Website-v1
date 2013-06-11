@@ -13,8 +13,8 @@ Template Name: Home Page
 get_header(); ?>
 
 <!-- Main -->
-<div id="main-wrapper" >
-    <div id="gold-bar" style="border-top: solid 5px #e3daa8;"></div>
+<div id="main-wrapper">
+    <div id="gold-bar"></div>
 
 <!-- Highlight -->
 <div id="main" class="5grid-layout">

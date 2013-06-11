@@ -14,7 +14,7 @@ get_header(); ?>
 
 <!-- Main -->
 <div id="main-wrapper" >
-	<div id="gold-bar" style="position:fixed;top:127px;height:35px;width:100%;background-color:#e3daa8;z-index: 1;"></div>
+	<div id="gold-bar"></div>
 
 <div id="main" class="5grid-layout">
 	<div class="row">
@@ -38,11 +38,12 @@ get_header(); ?>
 						</header>
 
 					<!-- post/page thumbnail -->
-					<?php if (has_post_thumbnail( $post->ID ) ): ?>
-					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-						<section>
-							<span class="image image-full" style="height: 350px; overflow: hidden;"><img src="<?php echo $image[0]; ?>" alt="" /></span>
-						</section>
+					<?php if (has_post_thumbnail( $post->ID ) ):
+						  	$img_id = get_post_thumbnail_id($post->ID);
+						  	$image = wp_get_attachment_image_src($img_id, $optional_size);
+						  	$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+					?>
+						<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="350px"/></span>
 					<?php endif; ?>
 					
 					<!-- post/page content -->

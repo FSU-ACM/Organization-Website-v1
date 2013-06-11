@@ -44,7 +44,7 @@
 <!-- Display banner only on home template -->
 <?php if ( is_page_template('home.php') ) { ?>
 <!-- Banner -->
-	<div id="banner-wrapper">
+	<div id="banner-wrapper" style="border-bottom: 35px solid #e3daa8;">
 		<section id="banner">
 			<h2>Not a member?</h2>
 			<!-- <span class="byline">signing up is simple.</span> -->

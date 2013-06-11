@@ -128,7 +128,7 @@
     });
 
 	$(window).scroll(function(){
-    	$("#gold-bar").css("top",Math.max(53,127-$(this).scrollTop()));
+    	$("#gold-bar").css("top",Math.max(47,197-$(this).scrollTop()));
 	});
 
 </script>
