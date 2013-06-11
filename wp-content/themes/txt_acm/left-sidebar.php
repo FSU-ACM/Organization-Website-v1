@@ -12,6 +12,9 @@ Template Name: Left Sidebar
 
 get_header(); ?>
 
+<!-- Main -->
+<div id="main-wrapper" >
+
 <div id="main" class="5grid-layout">
 	<div class="row">
 	<!-- Sidebar -->

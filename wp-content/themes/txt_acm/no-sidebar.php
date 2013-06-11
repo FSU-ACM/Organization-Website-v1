@@ -12,6 +12,9 @@ Template Name: No Sidebar
 
 get_header(); ?>
 
+<!-- Main -->
+<div id="main-wrapper" >
+
 <div id="main" class="5grid-layout">
 	<div class="row">
 		<div class="12u mobileUI-main-content">

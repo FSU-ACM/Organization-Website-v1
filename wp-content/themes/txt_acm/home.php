@@ -14,22 +14,17 @@ get_header(); ?>
 
 <!-- Main -->
 <div id="main-wrapper" >
-    <div id="main" class="5grid-layout">
-        <div class="row">
-            <div class="12u">
-
-<style type="text/css">
-
-    .fly {
-        min-height: 220px;
-    }
-
-</style>
+    <div id="gold-bar" style="border-top: solid 5px #e3daa8;"></div>
 
 <!-- Highlight -->
 <div id="main" class="5grid-layout">
     <div class="row">
         <div class="12u">
+
+            <style type="text/css" scoped>
+                .fly { min-height: 220px; }
+            </style>
+
             <section class="is-highlight">
                 <ul class="special">
                     <li><a href="#" id="first_trigger" class="battery">Battery</a></li>
@@ -42,7 +37,7 @@ get_header(); ?>
                 <div id="static_fly" class="fly">
                     <header>
                         <h2>Welcome to fsu.acm.org</h2>
-                        <span class="byline">The ACM Chapter for The Florida State University.</span>
+                        <span class="byline">The ACM Chapter for The Florida State University</span>
                     </header>
                     <p>
                         ACM, the world’s largest educational and scientific computing society, delivers resources that advance computing<br /> 
@@ -55,10 +50,12 @@ get_header(); ?>
                 <div id="first_flyin" class="fly" style="display:none">
                     <header>
                         <h2>FSU Computer Science</h2>
-                        <span class="byline">ACM has a very close relationship to the Computer Science Department.</span>
+                        <span class="byline">ACM has a very close relationship to the Computer Science Department</span>
                     </header>
                     <p>
-                        We host bi-annual events such as a Programming Contest and Picnic as well as social events including game nights. 
+                        Our organization works closely with Florida State University's department of Computer Science to ensure<br />
+                        our student members are receiving help in the necessary areas. This relationship allows us to offer students<br />
+                        with impromptu office hours and tutoring from experienced and knowledgeable peers.
                     </p>
                 </div>
 
@@ -69,31 +66,35 @@ get_header(); ?>
                         <span class="byline">Brought together by common interests.</span>
                     </header>
                     <p>
-                        ACM not only helps students assist each other academically, we also try to help students find jobs.
+                        ACM not only helps students assist each other academically, we also try to help students find jobs and<br />
+                        rewarding careers. Our main goal is to help prepare our members for that first technical interview. We<br />
+                        strive to make sure each student that comes through our doors leaves with confidence and determination.
                     </p>
                 </div>
 
                 <!-- third fly in element -->
                 <div id="third_flyin" class="fly" style="display:none">
                     <header>
-                        <h2>Third Title of Fly In</h2>
-                        <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                        <h2>Encouragement. Collaboration. Unity.</h2>
+                        <span class="byline">We emphasize teamwork and mutual growth</span>
                     </header>
                     <p>
-                        Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                        ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                        Computer Science is a difficult discipline to learn. ACM@FSU offers students with virtually unlimited<br />
+                        resources to grow, learn, and succeed. Our workshops and contests aim to challenge and inspire. All while <br />
+                        exposing students to real world problems and technologies that are relevant to the industry job markets.
                     </p>
                 </div>
 
                 <!-- fourth fly in element -->
                 <div id="fourth_flyin" class="fly" style="display:none">
                     <header>
-                        <h2>Fourth Title of Fly In</h2>
-                        <span class="byline">it contains: many items that seem important but actually aren’t</span>
+                        <h2>Think. Solve. Create.</h2>
+                        <span class="byline">Inspiration through education.</span>
                     </header>
                     <p>
-                        Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />
-                        ante risus. Aliquam erat volutpat. Aliquam luctus et mattis lectus amet pulvinar. Nam nec turpis consequat.
+                        For successful computer science students the learning never stops in the classroom. We provide opportunities<br />
+                        for students to exercise their knowledge and hone skills well before they interview for that first job.<br />
+                        We host bi-annual events such as a Programming Contest and Picnic as well as social events including game nights.
                     </p>
                 </div>
 

@@ -5,15 +5,12 @@
 
 						<!-- About -->
 							<section>
-								<h2 class="major"><span>What's this about?</span></h2>
+								<h2 class="major"><span>Who is ACM@FSU?</span></h2>
 								<p>
-									This is <a href="http://html5up.net/txt/">TXT</a>, a free site template designed by
-									<a href="http://n33.co">n33</a> for <a href="http://html5up.net/">HTML5 Up!</a>
-									It's built on the <a href="http://n33.co/5grid">5grid</a> framework, uses well-thought out
-									HTML5 and CSS3, and is fully responsive making it a great starting point for your own
-									projects. And, like everything else we make, it's also free to use for pretty much any
-									personal or commercial work under the <a href="http://html5up.net/license/">Creative Commons Attribution</a>
-									license, so go ahead and use it &ndash; just don't forget to credit us!
+									<a href="http://www.acm.org/">ACM (the Association for Computational Machinery)</a> is a U.S.-based international learned society for computing.
+									Our student chapter at The Florida State University is a network of student professionals that are interested in computer science. We strive to 
+									offer encouragement and inspiration to our student members in the form of workshops, training, and contests. We meet twice a month in 
+									<a href="http://map.campus.fsu.edu/index.aspx?LOV">LOV 151.</a>
 								</p>
 							</section>
 						<!-- /About -->
@@ -27,10 +24,9 @@
 							<section>
 								<h2 class="major"><span>Get in touch</span></h2>
 								<ul class="contact">
-									<li><a href="#" class="facebook">Facebook</a></li>
+									<li><a href="https://www.facebook.com/groups/cs.fsu.acm/" class="facebook">Facebook</a></li>
 									<li><a href="http://twitter.com/n33co" class="twitter">Twitter</a></li>
-									<li><a href="http://n33.co/feed/" class="rss">RSS</a></li>
-									<li><a href="http://dribbble.com/n33" class="dribbble">Dribbble</a></li>
+									<li><a href="<?php bloginfo('rss_url'); ?>" class="rss">RSS</a></li>
 									<li><a href="#" class="linkedin">LinkedIn</a></li>
 									<li><a href="#" class="googleplus">Google+</a></li>
 								</ul>
@@ -130,6 +126,10 @@
 
 		<? } ?> // end home page specific js
     });
+
+	$(window).scroll(function(){
+    	$("#gold-bar").css("top",Math.max(53,127-$(this).scrollTop()));
+	});
 
 </script>
 

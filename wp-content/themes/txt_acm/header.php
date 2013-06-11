@@ -52,8 +52,4 @@
 		</section>
 	</div>
 <!-- /Banner -->
-<?php } ?>
-
-<!-- Main -->
-	<div id="main-wrapper" >
-						
+<?php } ?>						
