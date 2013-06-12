@@ -30,7 +30,7 @@ function create_document() {
             ),
  
             'public' => true,
-            'menu_position' => 16,
+            'menu_position' => 20,
             'supports' => array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
             'taxonomies' => array( '' ),
             'menu_icon' => plugins_url( 'images/document-invoice.png', __FILE__ ),

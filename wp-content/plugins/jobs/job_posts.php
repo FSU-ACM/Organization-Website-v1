@@ -31,7 +31,7 @@ function create_job_posting() {
             ),
  
             'public' => true,
-            'menu_position' => 15,
+            'menu_position' => 20,
             'supports' => array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
             'taxonomies' => array( '' ),
             'menu_icon' => plugins_url( 'images/user-business-boss.png', __FILE__ ),

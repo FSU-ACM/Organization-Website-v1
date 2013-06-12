@@ -35,14 +35,54 @@ function board_members() {
             ),
  
             'public' => true,
-            'menu_position' => 16,
-            'supports' => array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
+            'menu_position' => 20,
+            'supports' => array( 'title', 'thumbnail', 'custom-fields' ),
             'taxonomies' => array( '' ),
             'menu_icon' => plugins_url( 'images/acm.png', __FILE__ ),
             'has_archive' => true
         )
     );
 }
+
+// relabeling admin panels for custom post data
+// relabel 'Title'
+function change_default_title( $title ){
+     $screen = get_current_screen();
+ 
+     if  ( 'board' == $screen->post_type ) {
+          $title = "Member's Name";
+     }
+ 
+     return $title;
+}
+add_filter( 'enter_title_here', 'change_default_title' );
+
+// relabel 'Featured Image'
+add_action('do_meta_boxes', 'change_image_box');
+function change_image_box()
+{
+    remove_meta_box( 'postimagediv', 'board', 'side' );
+    add_meta_box('postimagediv', __("Member's Photo"), 'post_thumbnail_meta_box', 'board', 'side', 'default');
+}
+
+
+// meta boxes custom post type meta data
+add_action( 'add_meta_boxes', 'board_member_meta_box_add' );  
+function board_member_meta_box_add()  
+{  
+    add_meta_box( 'member_meta', 'Board Member Meta', 'board_member_meta_box', 'board', 'normal', 'high' );  
+}
+
+function board_member_meta_box()  
+{  
+    ?>  
+    <label for="member_title">Member's Title  </label>  
+    <input type="text" name="member_title" id="member_title" />
+    <br />
+    <label for="member_email">Member's Email</label>  
+    <input type="text" name="member_email" id="member_email" />  
+    <?php
+} 
 
 
 ?>

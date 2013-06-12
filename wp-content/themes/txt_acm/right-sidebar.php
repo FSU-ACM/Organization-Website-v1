@@ -28,7 +28,7 @@ get_header(); ?>
 					<!-- page/post header -->
 						<header>
 							<h2><?php echo get_the_title(); ?></h2>
-							<span class="byline">Semper amet scelerisque metus faucibus morbi congue mattis</span>
+							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'page_byline', TRUE ); ?></span>
 						<?php if (!is_page()) { ?>
 							<ul class="meta">
 								<li class="timestamp">5 days ago</li>

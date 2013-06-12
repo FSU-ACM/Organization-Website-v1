@@ -440,3 +440,113 @@ add_action( 'customize_register', 'txt_acm_customize_register' );
 // 	wp_enqueue_script( 'txt_acm-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
 // }
 // add_action( 'customize_preview_init', 'txt_acm_customize_preview_js' );
+
+
+/**
+ * Adds byline to pages via admin panel
+ * @since TXT 1.0
+ */
+add_action( 'add_meta_boxes', 'page_byline' );
+function page_byline()
+{
+    add_meta_box( 'byline-meta-box-id', 	// ID attribute of metabox
+                  'Page Byline',       		// Title of metabox visible to user
+                  // Function that prints box in wp-admin
+                  'page_byline_callback',
+                  'page',      		// Show box for posts, pages, custom, etc.
+                  'normal',    		// Where on the page to show the box
+                  'high' );    		// Priority of box in display order
+}
+
+function page_byline_callback( $post )
+{
+    $values = get_post_custom( $post->ID );
+    $selected = isset( $values['page_byline'] ) ? $values['page_byline'][0] : '';
+
+    wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
+    ?>
+    <p>
+        <input type="text" name="page_byline" id="page_byline" style="width: 100%;" value="<?php echo $selected; ?>"></input>
+    </p>
+    <?php   
+}
+
+add_action( 'save_post', 'page_byline_save' );
+function page_byline_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+
+    // if our nonce isn't there, or we can't verify it, bail
+    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+
+    // if our current user can't edit this post, bail
+    if( !current_user_can( 'edit_post' ) ) return;
+
+    // now we can actually save the data
+    $allowed = array( 
+        'a' => array( // on allow a tags
+            'href' => array() // and those anchords can only have href attribute
+        )
+    );
+
+    // Probably a good idea to make sure your data is set
+
+    if( isset( $_POST['page_byline'] ) )
+        update_post_meta( $post_id, 'page_byline', $_POST['page_byline'] );
+}
+
+
+/**
+ * Adds byline to posts via admin panel
+ * @since TXT 1.0
+ */
+add_action( 'add_meta_boxes', 'post_byline' );
+function post_byline()
+{
+    add_meta_box( 'byline-meta-box-id', 	// ID attribute of metabox
+                  'Post Byline',       		// Title of metabox visible to user
+                  // Function that prints box in wp-admin
+                  'post_byline_callback',
+                  'post',      		// Show box for posts, posts, custom, etc.
+                  'normal',    		// Where on the post to show the box
+                  'high' );    		// Priority of box in display order
+}
+
+function post_byline_callback( $post )
+{
+    $values = get_post_custom( $post->ID );
+    $selected = isset( $values['post_byline'] ) ? $values['post_byline'][0] : '';
+
+    wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
+    ?>
+    <p>
+        <input type="text" name="post_byline" id="post_byline" style="width: 100%;" value="<?php echo $selected; ?>"></input>
+    </p>
+    <?php   
+}
+
+add_action( 'save_post', 'post_byline_save' );
+function post_byline_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+
+    // if our nonce isn't there, or we can't verify it, bail
+    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+
+    // if our current user can't edit this post, bail
+    if( !current_user_can( 'edit_post' ) ) return;
+
+    // now we can actually save the data
+    $allowed = array( 
+        'a' => array( // on allow a tags
+            'href' => array() // and those anchords can only have href attribute
+        )
+    );
+
+    // Probably a good idea to make sure your data is set
+
+    if( isset( $_POST['post_byline'] ) )
+        update_post_meta( $post_id, 'post_byline', $_POST['post_byline'] );
+}
