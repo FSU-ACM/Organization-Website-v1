@@ -39,6 +39,4 @@ function create_job_posting() {
         )
     );
 }
-
-
 ?>

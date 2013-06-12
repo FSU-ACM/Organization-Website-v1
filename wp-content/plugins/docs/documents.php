@@ -38,6 +38,4 @@ function create_document() {
         )
     );
 }
-
-
 ?>

@@ -45,6 +45,4 @@ function create_event() {
         )
     );
 }
-
-
 ?>
