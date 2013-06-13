@@ -68,14 +68,14 @@ function change_image_box()
 
 
 // meta boxes custom post type meta data
-add_action( 'add_meta_boxes', 'board_member_meta_box_add' );  
-function board_member_meta_box_add()  
-{  
-    add_meta_box( 'member_meta', 'Board Member Meta', 'board_member_meta_box', 'board', 'normal', 'high' );  
+add_action( 'add_meta_boxes', 'board_member_meta_box_add' );
+function board_member_meta_box_add()
+{
+    add_meta_box( 'member-meta-box-id', 'Board Member Meta', 'board_member_meta_box', 'board', 'normal', 'high' );
 }
 
-function board_member_meta_box( $post )  
-{  
+function board_member_meta_box( $post )
+{
     $values = get_post_custom( $post->ID );
     $title = isset( $values['member_title'] ) ? esc_attr( $values['member_title'][0] ) : '';
     $email = isset( $values['member_email'] ) ? esc_attr( $values['member_email'][0] ) : '';
@@ -83,51 +83,51 @@ function board_member_meta_box( $post )
     $active = isset( $values['member_active'] ) ? esc_attr( $values['member_active'][0] ) : '';
     wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
     ?>
-        <p>
-            <label for="member_title">Member's Title  </label>  
+    <p>
+        <label for="member_title">Member's Title  </label>  
             <select name="member_title" id="member_title">
-                <option value="">-select a position-</option>
-                <option value="vice president" <?php selected( $selected, 'Vice President' ); ?>>Vice President</option>
-                <option value="vice president of ugrads" <?php selected( $selected, 'Vice President of UGrads' ); ?>>Vice President of UGrads</option>
-                <option value="vice president of grads" <?php selected( $selected, 'Vice President of Grads' ); ?>>Vice President of Grads</option>
-                <option value="secretary" <?php selected( $selected, 'Secretary' ); ?>>Secretary</option>
-                <option value="treasurer" <?php selected( $selected, 'Treasurer' ); ?>>Treasurer</option>
-                <option value="historian" <?php selected( $selected, 'Historian' ); ?>>Historian</option>
-                <option value="president" <?php selected( $selected, 'President' ); ?>>President</option>
-                <option value="president emeritus" <?php selected( $selected, 'President Emeritus' ); ?>>President Emeritus</option>
-             </select>
-        </p>
-        <p>
-            <label for="member_email">Member's Email</label>  
-            <input type="text" name="member_email" id="member_email" style="width: 160px;"/>  
-        </p>
-        <p>
-            <label for="member_affiliation">Member's Affiliation</label>  
-            <select name="member_affiliation" id="member_affiliation">
-                 <option value="ACM" <?php selected( $selected, 'ACM' ); ?>>ACM</option>
-                 <option value="ACM[W]" <?php selected( $selected, 'ACM[W]' ); ?>>ACM[W]</option>
-             </select>
-         </p>
-         <p>
-             <label for="member_active">Is this member active?</label>
-             <input type="checkbox" name="member_active" id="member_active" <?php checked( $check, 'on' ); ?> />
-         </p>
-    <?php
-} 
+              <option value="" <?php selected( $title, '' ); ?>>-select a position-</option>
+              <option value="Vice President" <?php selected( $title, 'Vice President' ); ?>>Vice President</option>
+              <option value="Vice President of UGrads" <?php selected( $title, 'Vice President of UGrads' ); ?>>Vice President of UGrads</option>
+              <option value="Vice President of Grads" <?php selected( $title, 'Vice President of Grads' ); ?>>Vice President of Grads</option>
+              <option value="Secretary" <?php selected( $title, 'Secretary' ); ?>>Secretary</option>
+              <option value="Treasurer" <?php selected( $title, 'Treasurer' ); ?>>Treasurer</option>
+              <option value="Historian" <?php selected( $title, 'Historian' ); ?>>Historian</option>
+              <option value="President" <?php selected( $title, 'President' ); ?>>President</option>
+              <option value="President Emeritus" <?php selected( $title, 'President Emeritus' ); ?>>President Emeritus</option>
+            </select>
+    </p>
+    <p>
+        <label for="member_email">Member's Email</label>  
+        <input type="text" name="member_email" id="member_email" style="width: 160px;" value="<?php echo $email; ?>" />  
+    </p>
+    <p>
+        <label for="member_affiliation">Member's Affiliation</label>  
+        <select name="member_affiliation" id="member_affiliation">
+             <option value="ACM" <?php selected( $affiliation, 'ACM' ); ?>>ACM</option>
+             <option value="ACM[W]" <?php selected( $affiliation, 'ACM[W]' ); ?>>ACM[W]</option>
+        </select>
+    </p>
+    <p>
+        <label for="member_active">Is this member active?</label>
+        <input type="checkbox" name="member_active" id="member_active" <?php checked( $active, 'on' ); ?> />
+     </p>
+    <?php   
+}
 
-// save board member meta data
-add_action( 'save_post', 'board_member_meta_box' );
+
+add_action( 'save_post', 'board_member_meta_box_save' );
 function board_member_meta_box_save( $post_id )
 {
     // Bail if we're doing an auto save
     if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-
+    
     // if our nonce isn't there, or we can't verify it, bail
     if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
-
+    
     // if our current user can't edit this post, bail
     if( !current_user_can( 'edit_post' ) ) return;
-
+    
     // now we can actually save the data
     $allowed = array( 
         'a' => array( // on allow a tags
@@ -145,9 +145,11 @@ function board_member_meta_box_save( $post_id )
     if( isset( $_POST['member_affiliation'] ) )
         update_post_meta( $post_id, 'member_affiliation', esc_attr( $_POST['member_affiliation'] ) );
         
+    if( isset( $_POST['my_meta_box_select'] ) )
+        update_post_meta( $post_id, 'my_meta_box_select', esc_attr( $_POST['my_meta_box_select'] ) );
+        
     // This is purely my personal preference for saving checkboxes
     $chk = ( isset( $_POST['member_active'] ) && $_POST['member_active'] ) ? 'on' : 'off';
     update_post_meta( $post_id, 'member_active', $chk );
 }
-
 ?>
