@@ -165,17 +165,30 @@ function board_display_member_card() {
         $board_output = '<section class="is-features"><div class="5grid"><div class="row">';
         while ( $board_member_card->have_posts() ) : $board_member_card->the_post();
 
-        if ( function_exists('has_post_thumbnail') && has_post_thumbnail($post->ID) )
-            $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 282,153 ), false, '' );
+            if (get_post_meta( get_the_ID(), 'member_active', true ) == 'on') {
 
-            $board_output .= '<div class="3u">';
-            $board_output .= '<section class="is-feature">';
-            $board_output .= '<div style="height:185px;overflow:hidden;">';
-            $board_output .= '<img src="' . $src[0] . '" class="image image-full" width="153px"></div>';
+                if ( function_exists('has_post_thumbnail') && has_post_thumbnail($post->ID) )
+                    $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 282,153 ), false, '' );
+                else
+                    $src[0] = get_template_directory_uri() . '/images/noImage.jpg';
 
-            $board_output .= '<div class="member_card" style="border:solid 3px;min-height:150px;padding">';
-            $board_output .= '<h3>' . get_the_title() . '</h3>';
-            $board_output .= '</div></section></div>';
+                // meta data retrieval
+                $title = get_post_meta( get_the_ID(), 'member_title', true );
+                $email = get_post_meta( get_the_ID(), 'member_email', true );
+                $affiliation = get_post_meta( get_the_ID(), 'member_affiliation', true );
+
+                    $board_output .= '<div class="3u">';
+                    $board_output .= '<section class="is-feature">';
+                    $board_output .= '<div class="member_card_box" style="height:195px;overflow:hidden;">';
+                    $board_output .= '<img src="' . $src[0] . '" class="image image-full" width="153px"></div>';
+                    $board_output .= '<div class="member_card" style="border:solid 3px #e7eae8;min-height:150px;padding-top: 11px;">';
+                    $board_output .= '<h3>' . get_the_title() . '</h3>';
+                    $board_output .= '<hr style="border: solid 2px #e7eae8;width: 90%;">';
+                    $board_output .= '<h5>' . $title . '</h5>';
+                    $board_output .= '<a href="mailto:' . $email . '" class="button" style="font-size: .9em;padding: 0.4em 2em 0.4em 2em;">Email</a>';
+                    $board_output .= '<div class="affiliation" style="background: #e7eae8;width: 100%;height: auto;color: #6b7770;margin-top: 10px;">' . $affiliation . '</div>';
+                    $board_output .= '</div></section></div>';
+            }
 
         endwhile;
         $board_output .= '</div></div></section>';
