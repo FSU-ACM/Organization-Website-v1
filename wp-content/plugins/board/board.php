@@ -9,8 +9,6 @@ Author: Frank Valcarcel
 
 add_action( 'init', 'board_members' );
 
-// will have multiple required fields and set categories;
-
 /*    Required Data
       name, title, email, election date, picture, affiliation : ACM | ACM[W]
 */
@@ -87,14 +85,14 @@ function board_member_meta_box( $post )
         <label for="member_title">Member's Title  </label>  
             <select name="member_title" id="member_title">
               <option value="" <?php selected( $title, '' ); ?>>-select a position-</option>
-              <option value="Vice President" <?php selected( $title, 'Vice President' ); ?>>Vice President</option>
-              <option value="Vice President of UGrads" <?php selected( $title, 'Vice President of UGrads' ); ?>>Vice President of UGrads</option>
-              <option value="Vice President of Grads" <?php selected( $title, 'Vice President of Grads' ); ?>>Vice President of Grads</option>
-              <option value="Secretary" <?php selected( $title, 'Secretary' ); ?>>Secretary</option>
-              <option value="Treasurer" <?php selected( $title, 'Treasurer' ); ?>>Treasurer</option>
               <option value="Historian" <?php selected( $title, 'Historian' ); ?>>Historian</option>
               <option value="President" <?php selected( $title, 'President' ); ?>>President</option>
               <option value="President Emeritus" <?php selected( $title, 'President Emeritus' ); ?>>President Emeritus</option>
+              <option value="Secretary" <?php selected( $title, 'Secretary' ); ?>>Secretary</option>
+              <option value="Treasurer" <?php selected( $title, 'Treasurer' ); ?>>Treasurer</option>
+              <option value="Vice President" <?php selected( $title, 'Vice President' ); ?>>Vice President</option>
+              <option value="Vice President of Grads" <?php selected( $title, 'Vice President of Grads' ); ?>>Vice President of Grads</option>
+              <option value="Vice President of UGrads" <?php selected( $title, 'Vice President of UGrads' ); ?>>Vice President of UGrads</option>
             </select>
     </p>
     <p>
@@ -119,7 +117,7 @@ function board_member_meta_box( $post )
 add_action( 'save_post', 'board_member_meta_box_save' );
 function board_member_meta_box_save( $post_id )
 {
-    // Bail if we're doing an auto save
+    // bail if we're doing an auto save
     if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
     
     // if our nonce isn't there, or we can't verify it, bail
@@ -128,14 +126,14 @@ function board_member_meta_box_save( $post_id )
     // if our current user can't edit this post, bail
     if( !current_user_can( 'edit_post' ) ) return;
     
-    // now we can actually save the data
+    // now we can actually save the data, not bailing
     $allowed = array( 
         'a' => array( // on allow a tags
-            'href' => array() // and those anchords can only have href attribute
+            'href' => array() // and those anchors can only have href attribute
         )
     );
     
-    // Probably a good idea to make sure your data is set
+    // make sure data is set
     if( isset( $_POST['member_title'] ) )
         update_post_meta( $post_id, 'member_title', esc_attr( $_POST['member_title'] ) );
 
@@ -148,8 +146,42 @@ function board_member_meta_box_save( $post_id )
     if( isset( $_POST['my_meta_box_select'] ) )
         update_post_meta( $post_id, 'my_meta_box_select', esc_attr( $_POST['my_meta_box_select'] ) );
         
-    // This is purely my personal preference for saving checkboxes
     $chk = ( isset( $_POST['member_active'] ) && $_POST['member_active'] ) ? 'on' : 'off';
     update_post_meta( $post_id, 'member_active', $chk );
+}
+
+// board member card shortcode
+add_shortcode( 'board_members', 'board_display_member_card' );
+function board_display_member_card() {
+    $args = array(
+        'post_type' => 'board',
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'posts_per_page'=> -1,
+    );
+    
+    $board_member_card = new WP_Query( $args );
+    if( $board_member_card->have_posts() ):
+        $board_output = '<section class="is-features"><div class="5grid"><div class="row">';
+        while ( $board_member_card->have_posts() ) : $board_member_card->the_post();
+
+        if ( function_exists('has_post_thumbnail') && has_post_thumbnail($post->ID) )
+            $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 282,153 ), false, '' );
+
+            $board_output .= '<div class="3u">';
+            $board_output .= '<section class="is-feature">';
+            $board_output .= '<div style="height:185px;overflow:hidden;">';
+            $board_output .= '<img src="' . $src[0] . '" class="image image-full" width="153px"></div>';
+
+            $board_output .= '<div class="member_card" style="border:solid 3px;min-height:150px;padding">';
+            $board_output .= '<h3>' . get_the_title() . '</h3>';
+            $board_output .= '</div></section></div>';
+
+        endwhile;
+        $board_output .= '</div></div></section>';
+    endif;
+    
+    wp_reset_postdata();
+    return $board_output;
 }
 ?>
