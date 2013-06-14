@@ -154,19 +154,24 @@ function board_member_meta_box_save( $post_id )
 add_shortcode( 'board_members', 'board_display_member_card' );
 function board_display_member_card() {
     $args = array(
-        'post_type' => 'board',
-        'orderby' => 'title',
-        'order' => 'ASC',
-        'posts_per_page'=> -1,
+        'post_type' => 'board', // the post type we're querying
+        'orderby' => 'title',   // order by title
+        'order' => 'ASC',       // in ascending order
+        'posts_per_page'=> -1,  // will return all posts from this type
     );
     
-    $board_member_card = new WP_Query( $args );
-    if( $board_member_card->have_posts() ):
-        $board_output = '<section class="is-features"><div class="5grid"><div class="row">';
-        while ( $board_member_card->have_posts() ) : $board_member_card->the_post();
+    $board_member = new WP_Query( $args );
+    if( $board_member->have_posts() ):
+        $board_output = '<section class="is-features"><div class="5grid">';
+        while ( $board_member->have_posts() ) : $board_member->the_post();
 
+            // if the member is active
             if (get_post_meta( get_the_ID(), 'member_active', true ) == 'on') {
 
+                $card_count = 1;    // we need to count entries to break on 4
+                if ($card_count % 4 == 1) $board_output .= '<div class="row">';
+
+                // check for member photo or use default
                 if ( function_exists('has_post_thumbnail') && has_post_thumbnail($post->ID) )
                     $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 282,153 ), false, '' );
                 else
@@ -177,21 +182,25 @@ function board_display_member_card() {
                 $email = get_post_meta( get_the_ID(), 'member_email', true );
                 $affiliation = get_post_meta( get_the_ID(), 'member_affiliation', true );
 
-                    $board_output .= '<div class="3u">';
-                    $board_output .= '<section class="is-feature">';
-                    $board_output .= '<div class="member_card_box" style="height:195px;overflow:hidden;">';
-                    $board_output .= '<img src="' . $src[0] . '" class="image image-full" width="153px"></div>';
-                    $board_output .= '<div class="member_card" style="border:solid 3px #e7eae8;min-height:150px;padding-top: 11px;">';
-                    $board_output .= '<h3>' . get_the_title() . '</h3>';
-                    $board_output .= '<hr style="border: solid 2px #e7eae8;width: 90%;">';
-                    $board_output .= '<h5>' . $title . '</h5>';
-                    $board_output .= '<a href="mailto:' . $email . '" class="button" style="font-size: .9em;padding: 0.4em 2em 0.4em 2em;">Email</a>';
-                    $board_output .= '<div class="affiliation" style="background: #e7eae8;width: 100%;height: auto;color: #6b7770;margin-top: 10px;">' . $affiliation . '</div>';
-                    $board_output .= '</div></section></div>';
+
+                $board_output .= '<div class="3u">';
+                $board_output .= '<section class="is-feature">';
+                $board_output .= '<div class="member_card_box" style="height:195px;overflow:hidden;">';
+                $board_output .= '<img src="' . $src[0] . '" class="image image-full" width="153px"></div>';
+                $board_output .= '<div class="member_card" style="border:solid 3px #e7eae8;min-height:150px;padding-top: 11px;">';
+                $board_output .= '<h3>' . get_the_title() . '</h3>';
+                $board_output .= '<hr style="border: solid 2px #e7eae8;width: 90%;">';
+                $board_output .= '<h5>' . $title . '</h5>';
+                $board_output .= '<a href="mailto:' . $email . '" class="button" style="font-size: .9em;padding: 0.4em 2em 0.4em 2em;">Email</a>';
+                $board_output .= '<div class="affiliation" style="background: #e7eae8;width: 100%;height: auto;color: #6b7770;margin-top: 10px;">' . $affiliation . '</div>';
+                $board_output .= '</section></div>';
+
+                if ($card_count % 4 == 1) $board_output .= '</div>';
+                $card_count++;
             }
 
         endwhile;
-        $board_output .= '</div></div></section>';
+        $board_output .= '</div></section>';
     endif;
     
     wp_reset_postdata();
