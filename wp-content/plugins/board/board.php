@@ -162,14 +162,17 @@ function board_display_member_card() {
     
     $board_member = new WP_Query( $args );
     if( $board_member->have_posts() ):
+        $card_count = 0;
         $board_output = '<section class="is-features"><div class="5grid">';
         while ( $board_member->have_posts() ) : $board_member->the_post();
 
             // if the member is active
             if (get_post_meta( get_the_ID(), 'member_active', true ) == 'on') {
 
-                $card_count = 1;    // we need to count entries to break on 4
-                if ($card_count % 4 == 1) $board_output .= '<div class="row">';
+                $card_count += 1;    // we need to count entries to break on 4
+                if ($card_count % 4 == 1) 
+                    $board_output .= '<div class="row">';
+                // echo $card_count;
 
                 // check for member photo or use default
                 if ( function_exists('has_post_thumbnail') && has_post_thumbnail($post->ID) )
@@ -195,11 +198,14 @@ function board_display_member_card() {
                 $board_output .= '<div class="affiliation" style="background: #e7eae8;width: 100%;height: auto;color: #6b7770;margin-top: 10px;">' . $affiliation . '</div>';
                 $board_output .= '</section></div>';
 
-                if ($card_count % 4 == 1) $board_output .= '</div>';
-                $card_count++;
+                if ($card_count % 4 == 0 && $card_count != 1) 
+                    $board_output .= '</div>';
+                
             }
 
         endwhile;
+        if ($card_count % 4 != 0)
+            $board_output .= '</div>';
         $board_output .= '</div></section>';
     endif;
     
