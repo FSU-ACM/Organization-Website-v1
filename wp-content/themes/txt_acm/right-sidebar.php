@@ -31,7 +31,8 @@ get_header(); ?>
 							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'page_byline', TRUE ); ?></span>
 						<?php if (!is_page()) { ?>
 							<ul class="meta">
-								<li class="timestamp">5 days ago</li>
+								<!-- <li class="timestamp">5 days ago</li> -->
+								<!-- should update this with comment count -->
 								<li class="comments"><a href="#">1,024</a></li>
 							</ul>
 						<?php } ?>

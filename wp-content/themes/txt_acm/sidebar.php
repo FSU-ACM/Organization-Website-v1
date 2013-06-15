@@ -4,6 +4,14 @@
 		<section>
 			<h2 class="major"><span>Recent Posts</span></h2>
 			<ul class="style2">
+
+				<?php 
+					// $days_ago = round( ( date('U') - get_the_time('U') ) / ( 60*60*24 ) );
+					// if ($days_ago == 0) echo 'today';
+					// elseif ($days_ago == 1) echo 'yesterday';
+					// else echo 'posted '.$days_ago.' days ago.'; 
+				?>
+
 				<li>
 					<article class="is-post-summary">
 						<h3><a href="#">Where are the graphics?</a></h3>
@@ -32,7 +40,7 @@
 					</article>
 				</li>
 			</ul>
-			<a href="#" class="button button-alt">Browse Archives</a>
+			<a href="#" class="button button-alt">Bulletin</a>
 		</section>
 	<!-- /Recent Posts -->
 

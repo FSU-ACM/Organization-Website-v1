@@ -106,93 +106,45 @@ get_header(); ?>
 
         <br class="clear" />
 
+
+                    <!-- DONATE TO ACM -->
+    <h2 class="major"><span>be a sponsor</span></h2>
         <div class="row">
             <div class="12u">
-
-                <!-- Features -->
-                    <section class="is-features">
-                        <h2 class="major"><span>The Latest</span></h2>
-                        <div class="5grid">
-                            <div class="row">
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic01.jpg" alt="" /></a>
-                                            <h3><a href="#">Look Up</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
-                                </div>
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic02.jpg" alt="" /></a>
-                                            <h3><a href="#">Look Down</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
-                                </div>
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic03.jpg" alt="" /></a>
-                                            <h3><a href="#">Examine Room</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
-                                </div>
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic04.jpg" alt="" /></a>
-                                            <h3><a href="http://getlamp.com">Get Lamp</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
+                <section class="is-feature">
+                    <div class="5grid">
+                        <div class="row">
+                            <div class="9u" style="width:65%;">
+                                <div class="content content-left">
+                                    <h2>ACM@FSU is funded through private sponsors</h2>
+                                        <p>
+                                            Many of our events and gatherings are catered and sponsored by generous donors from local, 
+                                            regional, and even international companies. Thanks to their support our members can enjoy
+                                            competing in Programming Contests, attending talks by industry leaders, and access to helpful resources.
+                                            If you would like to make a donation, simply click on the button.
+                                        </p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="12u">
-                                
-                                    <div class="actions">
-                                        <a href="#" class="button button-big">Do Something</a>
-                                        <a href="#" class="button button-alt button-big">Think About It</a>
-                                    </div>
+                            <div class="3u">
+                                <div class="sidebar">
+                        
+                                        <a href="#" class="button button-big">Donate</a>
 
                                 </div>
                             </div>
                         </div>
-                    </section>
-                <!-- /Features -->
-
+                    </div>
+                </section>
             </div>
         </div>
+
+
         <div class="row">
             <div class="12u">
 
                 <!-- Blog -->
                     <section class="is-blog">
-                        <h2 class="major"><span>Adventure Log</span></h2>
+                        <h2 class="major"><span>The Buzz</span></h2>
                         <div class="5grid">
                             <div class="row">
                                 <div class="9u">
@@ -285,6 +237,79 @@ get_header(); ?>
                 
             </div>
         </div>
+        <div class="row">
+            <div class="12u">
+
+                <!-- Features -->
+                    <section class="is-features">
+                        <h2 class="major"><span>The Latest</span></h2>
+                        <div class="5grid">
+                            <div class="row">
+                                <div class="3u">
+                                    
+                                    <!-- Feature -->
+                                        <section class="is-feature">
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic01.jpg" alt="" /></a>
+                                            <h3><a href="#">Look Up</a></h3>
+                                            <p>
+                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
+                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
+                                            </p>
+                                        </section>
+                                    <!-- /Feature -->
+                            
+                                </div>
+                                <div class="3u">
+                                    
+                                    <!-- Feature -->
+                                        <section class="is-feature">
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic02.jpg" alt="" /></a>
+                                            <h3><a href="#">Look Down</a></h3>
+                                            <p>
+                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
+                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
+                                            </p>
+                                        </section>
+                                    <!-- /Feature -->
+                            
+                                </div>
+                                <div class="3u">
+                                    
+                                    <!-- Feature -->
+                                        <section class="is-feature">
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic03.jpg" alt="" /></a>
+                                            <h3><a href="#">Examine Room</a></h3>
+                                            <p>
+                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
+                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
+                                            </p>
+                                        </section>
+                                    <!-- /Feature -->
+                            
+                                </div>
+                                <div class="3u">
+                                    
+                                    <!-- Feature -->
+                                        <section class="is-feature">
+                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic04.jpg" alt="" /></a>
+                                            <h3><a href="http://getlamp.com">Get Lamp</a></h3>
+                                            <p>
+                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
+                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
+                                            </p>
+                                        </section>
+                                    <!-- /Feature -->
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                <!-- /Features -->
+
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- /Main -->
