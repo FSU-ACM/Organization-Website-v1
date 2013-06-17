@@ -443,6 +443,21 @@ add_action( 'customize_register', 'txt_acm_customize_register' );
 
 
 /**
+ * Adds jobs custom post type to main query loop
+ * @since TXT 1.0
+ */
+
+// // Show posts of 'post', 'page' and 'movie' post types in main query loop
+// add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+
+// function add_my_post_types_to_query( $query ) {
+// 	if ( is_home() && $query->is_main_query() )
+// 		$query->set( 'post_type', array( 'post', 'page', 'job_posts' ) );
+// 	return $query;
+// }
+
+
+/**
  * Adds byline to pages via admin panel
  * @since TXT 1.0
  */

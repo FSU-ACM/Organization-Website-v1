@@ -57,32 +57,15 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        // $('#nav').localScroll(800);
-
-        // // .parallax(xPosition, speedFactor, outerHeight) options:
-        // // xPosition - Horizontal position of the element
-        // // inertia - speed to move relative to vertical scroll.
-
-        // // Example: 0.1 is one tenth the speed of scrolling, 
-        // // 2 is twice the speed of scrolling
-        // // outerHeight (true/false) - 
-        // // Whether or not jQuery should use it's outerHeight option to 
-        // // determine when a section is in the viewport
-
-        // $('#header').parallax("50%", 0.1);
-        // $('#banner-wrapper').parallax("50%", 0.1);
-        // $('#banner').parallax("50%", 2.0);
-        // // $('.bg').parallax("50%", 0.4);
-        // $('#main').parallax("70%", 0.3);
-
-			
+			// failing parralax scrool effect
 			$("#banner-wrapper").scroll(function () {
 				s = $("#banner-wrapper").scrollTop();
 				$("#banner-wrapper img").css("-webkit-transform","translateY(" +  (s/5)  + "px)");
 			})
 
 
-        <?php if ( is_front_page() ) { ?>
+        <?php if ( is_page_template('home.php') ) { ?>
+
 		// load the following only on homepage
 		// this js controls the animations and user interactivity for 
 		// home page specific events
@@ -93,7 +76,7 @@
 	          	$('#first_flyin').show();
 	          },
 	          function () {
-		         $('#first_flyin').hide();
+		        $('#first_flyin').hide();
 	          	$('#static_fly').show();
 	        })
 	      	$("#second_trigger").hover(
@@ -124,11 +107,25 @@
 	          	$('#static_fly').show();
 	        })
 
-		<? } ?> // end home page specific js
-    });
+	        $("#gold-bar").show().css("top", "699px");
 
-	$(window).scroll(function(){
-    	$("#gold-bar").css("top",Math.max(47,135-$(this).scrollTop()));
+	    });
+	
+		$(window).scroll(function(){
+    		$("#gold-bar").css("top",Math.max(47,699-$(this).scrollTop()));
+
+		// end home page specific js
+
+		<? } else { ?>
+    
+		$("#gold-bar").show().css("top", "135px");
+
+    });
+	
+		$(window).scroll(function(){
+    		$("#gold-bar").css("top",Math.max(47,135-$(this).scrollTop()));
+
+    	<?php } ?>
 	});
 
 </script>

@@ -107,15 +107,15 @@ get_header(); ?>
         <br class="clear" />
 
 
-                    <!-- DONATE TO ACM -->
-    <h2 class="major"><span>be a sponsor</span></h2>
-        <div class="row">
+    <!-- DONATE TO ACM -->
+    <h2 class="major" style="margin:0;"><span>be a sponsor</span></h2>
+        <div class="row" style="padding: 1em 0 1em 0;">
             <div class="12u">
                 <section class="is-feature">
                     <div class="5grid">
                         <div class="row">
                             <div class="9u" style="width:65%;">
-                                <div class="content content-left">
+                                <div class="content content-left" style="text-align:left;">
                                     <h2>ACM@FSU is funded through private sponsors</h2>
                                         <p>
                                             Many of our events and gatherings are catered and sponsored by generous donors from local, 
@@ -126,10 +126,9 @@ get_header(); ?>
                                 </div>
                             </div>
                             <div class="3u">
-                                <div class="sidebar">
-                        
-                                        <a href="#" class="button button-big">Donate</a>
-
+                                <!-- floater should display:none; on mobile browsers!!!  -->
+                                <div id="floater" style="padding:20%;"> 
+                                <div class="sidebar"><a href="#" class="button button-big">Donate</a></div>
                                 </div>
                             </div>
                         </div>
