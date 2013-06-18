@@ -95,7 +95,12 @@ Author URI: fsu.acm.oeg
 	{
 		clear: both;
 	}
-	
+
+	hr {
+		margin: 0 0 60px 0;
+		border: #e7eae8 solid 2px;
+	}
+
 	p, ul, ol, dl, table
 	{
 		margin-bottom: 3em;
@@ -432,6 +437,20 @@ Author URI: fsu.acm.oeg
 				background-position: -16px 0px;
 			}
 
+			ul.meta li.post_type {padding-left: 0;}
+			ul.meta li.post_type:before
+			{
+				width: 0px;
+				background: none;
+			}
+			
+			ul.meta li.categories {padding-left: 0;}
+			ul.meta li.categories:before
+			{
+				width: 0px;
+				background: none;
+			}
+
 /*********************************************************************************/
 /* Section + Article Types                                                       */
 /*********************************************************************************/
@@ -453,6 +472,11 @@ Author URI: fsu.acm.oeg
 	{
 	}
 
+	.is-blog a
+	{
+		text-decoration: none;
+	}
+
 	.is-post
 	{
 	}
@@ -465,15 +489,45 @@ Author URI: fsu.acm.oeg
 	{
 	}
 
-	.blog_post a
+
+/*********************************************************************************/
+/* Pagination                                                                    */
+/*********************************************************************************/
+
+	.pagination 
 	{
-		text-decoration: none;
+		clear:both;
+		position:relative;
+		line-height:13px;
+		left: 50%;
+	}
+	 
+	.pagination span, .pagination a 
+	{
+		display:block;
+		float:left;
+		margin: 2px 2px 2px 0;
+		padding:6px 9px 5px 9px;
+		text-decoration:none;
+			width:auto;
+		color:#fff;
+		background: #6b7770;
+		border-radius: 2px;
+	}
+	 
+	.pagination a:hover
+	{
+		color:#fff;
+		background: #e3daa8;
+	}
+	 
+	.pagination .current
+	{
+		padding:6px 9px 5px 9px;
+		background: #e3daa8;
+		color:#fff;
 	}
 
-	.blog_post a:hover
-	{
-		color: #540115 !important;
-	}
 
 /*********************************************************************************/
 /* Sidebar + Content                                                             */

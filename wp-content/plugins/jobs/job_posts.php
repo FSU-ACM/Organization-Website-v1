@@ -33,9 +33,9 @@ function create_job_posting() {
             'public' => true,
             'menu_position' => 20,
             'supports' => array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
-            'taxonomies' => array( '' ),
+            'taxonomies' => array(''),
             'menu_icon' => plugins_url( 'images/user-business-boss.png', __FILE__ ),
-            'has_archive' => true
+            'has_archive' => true,
         )
     );
 }

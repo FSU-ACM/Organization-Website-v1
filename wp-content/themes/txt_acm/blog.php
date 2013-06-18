@@ -33,21 +33,38 @@ get_header(); ?>
 		<!-- Blog -->
 				<h2 class="major" style="margin:0;"><span>what's new</span></h2>			
 				<br />
-				<?php $latest = new WP_Query('showposts=-1'); ?>
-				<?php while( $latest->have_posts() ) : $latest->the_post(); ?>
+				<?php 
+				      $temp = $wp_query; 
+  					  $wp_query = null; 
+  					  $wp_query = new WP_Query();
+  					  $args = array(
+  					  		'post_type' => array('post','job_posts'), 
+    						'posts_per_page' => 3,
+    						'ignore_sticky_posts' => 1,
+    						'paged' => $paged
+    					);
+					  $wp_query->query( $args ); ?>
+				<?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 		
-					<article id="post-<?php the_ID(); ?>" class="is-page-content blog_post">
+					<article id="post-<?php the_ID(); ?>" class="is-page-content post">
 
 					<!-- post header -->
 						<header>
-							<a href="<?php the_permalink(); ?>" class=""><h2><?php echo get_the_title(); ?></h2></a>
+							<a href="<?php the_permalink(); ?>" class="blog_title"><h2><?php echo get_the_title(); ?></h2></a>
 							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
-						<?php if (!is_page()) { ?>
 							<ul class="meta">
-								<li class="timestamp">5 days ago</li>
+								<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
 								<li class="comments"><a href="#">1,024</a></li>
+								<li class="post_type"><?php echo 'Posted in  ';
+															if (get_post_type( get_the_ID() ) == 'post') {
+																echo 'Blog, ';
+																echo 'under ';
+																the_category(', ');
+															}
+															elseif (get_post_type( get_the_ID() ) == 'job_posts') echo 'Jobs';
+													  ?>
+								</li>
 							</ul>
-						<?php } ?>
 						</header>
 
 				<!-- Content -->
@@ -57,7 +74,7 @@ get_header(); ?>
 						  	$image = wp_get_attachment_image_src($img_id, $optional_size);
 						  	$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
 					?>
-						<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="350px"/></span>
+						<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px"/></span>
 					<?php endif; ?>
 					<!-- /post thumbnail -->
                         
@@ -66,15 +83,23 @@ get_header(); ?>
 
 					</article>
 
+					<hr>
+
 				<!-- /Content -->
 				
         <!-- /Blog -->
 <?php endwhile;?>
 
-			  <div class="navigation index">
-			    <div class="alignleft"><?php next_posts_link( 'Older Entries' ); ?></div>
-			    <div class="alignright"><?php previous_posts_link( 'Newer Entries' ); ?></div>
-			  </div><!--end navigation-->
+	<center>
+		<?php if (function_exists("pagination")) {
+    		pagination($additional_loop->max_num_pages);
+		} ?>
+	</center>
+
+		<?php 
+		  $wp_query = null; 
+		  $wp_query = $temp;  // Reset
+		?>
 			
 			</div>
 		</div>

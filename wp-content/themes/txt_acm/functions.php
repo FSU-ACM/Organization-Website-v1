@@ -443,21 +443,6 @@ add_action( 'customize_register', 'txt_acm_customize_register' );
 
 
 /**
- * Adds jobs custom post type to main query loop
- * @since TXT 1.0
- */
-
-// // Show posts of 'post', 'page' and 'movie' post types in main query loop
-// add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
-
-// function add_my_post_types_to_query( $query ) {
-// 	if ( is_home() && $query->is_main_query() )
-// 		$query->set( 'post_type', array( 'post', 'page', 'job_posts' ) );
-// 	return $query;
-// }
-
-
-/**
  * Adds byline to pages via admin panel
  * @since TXT 1.0
  */
@@ -564,4 +549,46 @@ function post_byline_save( $post_id )
 
     if( isset( $_POST['post_byline'] ) )
         update_post_meta( $post_id, 'post_byline', $_POST['post_byline'] );
+}
+
+
+/**
+ * Numeric pagination
+ * @since TXT 1.0
+ */
+function pagination($pages = '', $range = 2)
+{  
+     $showitems = ($range * 2)+1;  
+
+     global $paged;
+     if(empty($paged)) $paged = 1;
+
+     if($pages == '')
+     {
+         global $wp_query;
+         $pages = $wp_query->max_num_pages;
+         if(!$pages)
+         {
+             $pages = 1;
+         }
+     }   
+
+     if(1 != $pages)
+     {
+         echo "<div class='pagination'>";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
+         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
+
+         for ($i=1; $i <= $pages; $i++)
+         {
+             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+             {
+                 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
+             }
+         }
+
+         if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";  
+         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
+         echo "</div>\n";
+     }
 }
