@@ -148,29 +148,51 @@ get_header(); ?>
                             <div class="row">
                                 <div class="9u">
                                     <div class="content content-left">
-                                    
+
+                <?php 
+                      $temp = $wp_query; 
+                      $wp_query = null; 
+                      $wp_query = new WP_Query();
+                      $sticky = get_option( 'sticky_posts' );
+                      $args = array(
+                        'posts_per_page' => 1,
+                        'post__in'  => $sticky,
+                        'ignore_sticky_posts' => 1
+                      );
+                      query_posts( $args );
+                      if ( $sticky[0] ) { 
+                        while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+
                                         <!-- Featured Post -->
                                             <article class="is-post">
                                                 <header>
-                                                    <h3><a href="#">You mean I have to read stuff?</a></h3>
-                                                    <span class="byline">I’m going back to playing call of Modern Halostrike 15</span>
+                                                    <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+                                                    <span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
                                                     <ul class="meta">
-                                                        <li class="timestamp">15 minutes ago</li>
+                                                        <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
                                                         <li class="comments"><a href="#">8</a></li>
                                                     </ul>
                                                 </header>
-                                                <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic05.jpg" alt="" /></a>
-                                                <p>
-                                                    Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in lectus. Praesent 
-                                                    semper mod quis eget mi. Etiam sed ante risus aliquam erat et volutpat. Praesent a 
-                                                    dapibus velit. Curabitur sed nisi nunc, accumsan vestibulum lectus. Lorem ipsum 
-                                                    dolor sit non aliquet sed, tempor et dolor.  Praesent a dapibus velit. Curabitur 
-                                                    accumsan.
-                                                </p>
-                                                <a href="#" class="button">Continue Reading</a>
+                                                <?php if (has_post_thumbnail( $post->ID ) ):
+                                                        $img_id = get_post_thumbnail_id($post->ID);
+                                                        $image = wp_get_attachment_image_src($img_id, $optional_size);
+                                                        $alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+                                                ?>      
+                                                <a href="<?php the_permalink(); ?>" class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px" /></a>
+                                                <?php endif; ?>
+
+                                                <p><?php the_excerpt(); ?></p>
+                                                
+                                                <a href="<?php the_permalink(); ?>" class="button">Continue Reading</a>
                                             </article>
                                         <!-- /Featured Post -->
-                                    
+                        <?php endwhile;?>
+                      <?php } ?>
+
+                      <?php 
+                          $wp_query = null; 
+                          $wp_query = $temp;  // Reset
+                      ?>
                                     </div>
                                 </div>
                                 <div class="3u">
@@ -239,72 +261,7 @@ get_header(); ?>
         <div class="row">
             <div class="12u">
 
-                <!-- Features -->
-                    <section class="is-features">
-                        <h2 class="major"><span>The Latest</span></h2>
-                        <div class="5grid">
-                            <div class="row">
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic01.jpg" alt="" /></a>
-                                            <h3><a href="#">Look Up</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
-                                </div>
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic02.jpg" alt="" /></a>
-                                            <h3><a href="#">Look Down</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
-                                </div>
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic03.jpg" alt="" /></a>
-                                            <h3><a href="#">Examine Room</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
-                                </div>
-                                <div class="3u">
-                                    
-                                    <!-- Feature -->
-                                        <section class="is-feature">
-                                            <a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic04.jpg" alt="" /></a>
-                                            <h3><a href="http://getlamp.com">Get Lamp</a></h3>
-                                            <p>
-                                                Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in 
-                                                lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-                                            </p>
-                                        </section>
-                                    <!-- /Feature -->
-                            
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                <!-- /Features -->
+                <?php include (TEMPLATEPATH . '/topfooter.php'); ?>
 
             </div>
         </div>

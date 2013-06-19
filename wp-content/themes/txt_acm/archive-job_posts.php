@@ -6,9 +6,6 @@
 * @since TXT 1.0
 */
 
-/*
-Template Name: Blog
-*/
 
 get_header(); ?>
 
@@ -25,20 +22,20 @@ get_header(); ?>
 
 					<!-- page/post header -->
 						<header>
-							<h2>The ACM@FSU Bulletin</h2>
-							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'page_byline', TRUE ); ?></span>
+							<h2>Jobs and Internships</h2>
+							<span class="byline">your CS career may start here</span>
 						</header>
 				</article>
 
 		<!-- Blog -->
-				<h2 class="major" style="margin:0;"><span>what's new</span></h2>			
+				<h2 class="major" style="margin:0;"><span>most recent</span></h2>			
 				<br />
 				<?php 
 				      $temp = $wp_query; 
   					  $wp_query = null; 
   					  $wp_query = new WP_Query();
   					  $args = array(
-  					  		'post_type' => array('post','job_posts'), 
+  					  		'post_type' => array('job_posts'), 
     						'posts_per_page' => 3,
     						'ignore_sticky_posts' => 1,
     						'paged' => $paged
@@ -55,15 +52,6 @@ get_header(); ?>
 							<ul class="meta">
 								<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
 								<li class="comments"><a href="#">1,024</a></li>
-								<li class="post_type"><?php echo 'Posted in  ';
-															if (get_post_type( get_the_ID() ) == 'post') {
-																echo 'Blog, ';
-																echo 'under ';
-																the_category(', ');
-															}
-															elseif (get_post_type( get_the_ID() ) == 'job_posts') echo 'Jobs';
-													  ?>
-								</li>
 							</ul>
 						</header>
 
