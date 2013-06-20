@@ -14,6 +14,7 @@ get_header(); ?>
 
 <!-- Main -->
 <div id="main-wrapper" >
+	<div id="gold-bar"></div>
 
 <div id="main" class="5grid-layout">
 	<div class="row">

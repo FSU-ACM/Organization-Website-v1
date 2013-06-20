@@ -594,6 +594,16 @@ function pagination($pages = '', $range = 2)
 }
 
 
-
+/**
+ * Replace Excerpt ellipsis
+ * @since TXT 1.0
+ */
+function replace_excerpt($content) {
+       return str_replace('[...]',
+               '<span class="more-link"><a href="'. get_permalink() .'">...Continue Reading</a></span>',
+               $content
+       );
+}
+add_filter('the_excerpt', 'replace_excerpt');
 
 

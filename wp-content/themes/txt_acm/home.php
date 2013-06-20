@@ -188,67 +188,43 @@ get_header(); ?>
                                         <!-- /Featured Post -->
                         <?php endwhile;?>
                       <?php } ?>
+                      <?php $wp_query = null; $wp_query = $temp; ?>
 
-                      <?php 
-                          $wp_query = null; 
-                          $wp_query = $temp;  // Reset
-                      ?>
                                     </div>
                                 </div>
+                                
                                 <div class="3u">
                                     <div class="sidebar">
-                                
+
+                                    <?php 
+                                          $temp = $wp_query; 
+                                          $wp_query = null; 
+                                          $wp_query = new WP_Query();
+                                          $args = array(
+                                                'post_type' => array('post','job_posts', 'documents', 'events'), 
+                                                'posts_per_page' => 5,
+                                                'ignore_sticky_posts' => 1,
+                                            );
+                                          $wp_query->query( $args ); ?>
+
                                         <!-- Archives -->
                                             <ul class="style2">
+                                            <?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
                                                 <li>
                                                     <article class="is-post-summary">
-                                                        <h3><a href="#">Where are the graphics?</a></h3>
+                                                        <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
                                                         <ul class="meta">
-                                                            <li class="timestamp">6 hours ago</li>
+                                                            <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
                                                             <li class="comments"><a href="#">34</a></li>
                                                         </ul>
                                                     </article>
                                                 </li>
-                                                <li>
-                                                    <article class="is-post-summary">
-                                                        <h3><a href="#">What achievements are there</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="timestamp">9 hours ago</li>
-                                                            <li class="comments"><a href="#">27</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article class="is-post-summary">
-                                                        <h3><a href="#">Can I play w/a controller</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="timestamp">Yesterday</li>
-                                                            <li class="comments"><a href="#">184</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article class="is-post-summary">
-                                                        <h3><a href="#">How is this a game??</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="timestamp">2 days ago</li>
-                                                            <li class="comments"><a href="#">286</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
-                                                <li>
-                                                    <article class="is-post-summary">
-                                                        <h3><a href="#">Imagination is lost on me</a></h3>
-                                                        <ul class="meta">
-                                                            <li class="timestamp">3 days ago</li>
-                                                            <li class="comments"><a href="#">8,086</a></li>
-                                                        </ul>
-                                                    </article>
-                                                </li>
+                                            <?php endwhile;?>
+                                            <?php $wp_query = null; $wp_query = $temp; ?>
                                             </ul>
-                                            <a href="#" class="button button-alt">Browse Archives</a>
+                                            <a href="<?php echo site_url(); ?>/bulletin/" class="button button-alt">Browse Bulletin</a>
                                         <!-- /Archives -->
-                                    
+
                                     </div>
                                 </div>
                             </div>

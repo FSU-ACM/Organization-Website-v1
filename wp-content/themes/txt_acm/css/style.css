@@ -477,6 +477,10 @@ Author URI: fsu.acm.oeg
 		text-decoration: none;
 	}
 
+	.blog_title {
+		font-size: 31px;
+	}
+
 	.is-post
 	{
 	}
