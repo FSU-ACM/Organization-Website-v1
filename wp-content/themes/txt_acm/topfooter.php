@@ -22,8 +22,8 @@
 				
 				<!-- Feature -->
 					<section class="is-feature">
-						<a href="<?php echo site_url(); ?>/events/" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/events.jpg" alt="" /></a>
-						<h3><a href="<?php echo site_url(); ?>/events/">Chapter Events</a></h3>
+						<a href="<?php echo site_url(); ?>/acm_events/" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/events.jpg" alt="" /></a>
+						<h3><a href="<?php echo site_url(); ?>/acm_events/">Chapter Events</a></h3>
 						<p>
 							The Events page is the go to place for all information regarding upcoming
 							workshops, contests and socials. Check out the calendar and sync it with yours.
@@ -50,8 +50,8 @@
 				
 				<!-- Feature -->
 					<section class="is-feature">
-						<a href="<?php echo site_url(); ?>/docs/" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/docs.jpg" alt="" /></a>
-						<h3><a href="<?php echo site_url(); ?>/docs/">Docs and Resources</a></h3>
+						<a href="<?php echo site_url(); ?>/acm_docs/" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/docs.jpg" alt="" /></a>
+						<h3><a href="<?php echo site_url(); ?>/acm_docs/">Docs and Resources</a></h3>
 						<p>
 							Review all chapter documents including our constitution. Also look here for 
 							useful resources like course syllabi, previous contest questions and etc.

@@ -50,11 +50,13 @@ get_header(); ?>
 
 					<!-- post header -->
 						<header>
-							<h2><a href="<?php the_permalink(); ?>" class="blog_title"><?php echo get_the_title(); ?></a></h2>
-							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
+							<a href="<?php the_permalink(); ?>" class="blog_title"><?php echo get_the_title(); ?></a>
+							<span class="blog_subtitle"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
 							<ul class="meta">
 								<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
-								<li class="comments"><a href="#">1,024</a></li>
+								<li class="comments"><a href="<?php the_permalink(); ?>">
+									<fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count>
+								</a></li>
 								<li class="post_type"><?php echo 'Posted in  ';
 															if (get_post_type( get_the_ID() ) == 'post') {
 																echo 'Blog, ';

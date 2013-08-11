@@ -192,9 +192,9 @@ function board_display_member_card() {
                 $board_output .= '<img src="' . $src[0] . '" class="image image-full" width="153px"></div>';
                 $board_output .= '<div class="member_card" style="border:solid 3px #e7eae8;min-height:150px;padding-top: 11px;">';
                 $board_output .= '<h3>' . get_the_title() . '</h3>';
-                $board_output .= '<hr style="border: solid 2px #e7eae8;width: 90%;">';
-                $board_output .= '<h5>' . $title . '</h5>';
-                $board_output .= '<a href="mailto:' . $email . '" class="button" style="font-size: .9em;padding: 0.4em 2em 0.4em 2em;">Email</a>';
+                $board_output .= '<hr style="border: solid 2px #e7eae8;width: 100%;">';
+                $board_output .= $title;
+                $board_output .= '<a href="mailto:' . $email . '" class="button" style="font-size: .9em;padding: 0.4em 5.2em;">Email</a>';
                 $board_output .= '<div class="affiliation" style="background: #e7eae8;width: 100%;height: auto;color: #6b7770;margin-top: 10px;">' . $affiliation . '</div>';
                 $board_output .= '</section></div>';
 

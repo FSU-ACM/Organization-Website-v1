@@ -30,7 +30,7 @@ get_header(); ?>
 						<span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
 						<ul class="meta">
 							<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
-							<li class="comments"><a href="#">1,024</a></li>
+							<li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>
 						</ul>
 					</header>
 
@@ -52,6 +52,66 @@ get_header(); ?>
 						<?php endif; ?>
 					</section>
 
+		<style type="text/css">
+
+		h2.major span {
+			top: -27px;
+			padding: 0 1.5em 0 1.5em;
+		}
+		.major span {
+			font-size: 23px;
+		}
+		</style>
+
+		<div class="row">
+            <div class="12u">
+                    <section class="is-blog">
+                        <h2 class="major"><span>Comments</span></h2>
+                        <div class="5grid">
+                            <div class="row">
+                                <div class="9u">
+                                    <div class="content content-left">
+                                    		<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="863"></div>
+                                    </div>
+                                </div>
+                                <div class="3u">
+                                    <div class="sidebar">
+
+                                    <?php 
+                                          $temp = $wp_query; 
+                                          $wp_query = null; 
+                                          $wp_query = new WP_Query();
+                                          $args = array(
+                                                'post_type' => array('post','job_posts', 'documents', 'events'), 
+                                                'posts_per_page' => 5,
+                                                'ignore_sticky_posts' => 1,
+                                            );
+                                          $wp_query->query( $args ); ?>
+
+                                        <!-- Archives -->
+                                            <ul class="style2">
+                                            <?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+                                                <li>
+                                                    <article class="is-post-summary">
+                                                        <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+                                                        <ul class="meta">
+                                                            <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
+                                                            <li class="comments"><a href="#">34</a></li>
+                                                        </ul>
+                                                    </article>
+                                                </li>
+                                            <?php endwhile;?>
+                                            <?php $wp_query = null; $wp_query = $temp; ?>
+                                            </ul>
+                                            <a href="<?php echo site_url(); ?>/bulletin/" class="button button-alt">Back To Bulletin</a>
+                                        <!-- /Archives -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
 				</article>
 
 			<!-- /Content -->
@@ -60,14 +120,12 @@ get_header(); ?>
 	</div>
 </div>
 <div class="row">
-	<div class="12u">
-
-		<?php include (TEMPLATEPATH . '/topfooter.php'); ?>
-
-	</div>
+	<div class="12u"><?php include (TEMPLATEPATH . '/topfooter.php'); ?></div>
 </div>
 </div>
 </div>
 <!-- /Main -->
+
+<style type="text/css">.mainCommentForm {border-radius: 5px!important;margin-bottom: 20px!important;}</style>
 
 <?php get_footer(); ?>

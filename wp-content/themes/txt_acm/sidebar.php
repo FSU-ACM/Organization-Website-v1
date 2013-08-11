@@ -4,14 +4,6 @@
 		<section>
 			<h2 class="major"><span>Recent Posts</span></h2>
 			<ul class="style2">
-
-				<?php 
-					// $days_ago = round( ( date('U') - get_the_time('U') ) / ( 60*60*24 ) );
-					// if ($days_ago == 0) echo 'today';
-					// elseif ($days_ago == 1) echo 'yesterday';
-					// else echo 'posted '.$days_ago.' days ago.'; 
-				?>
-
 				<li>
 					<article class="is-post-summary">
 						<h3><a href="#">Where are the graphics?</a></h3>
@@ -21,32 +13,14 @@
 						</ul>
 					</article>
 				</li>
-				<li>
-					<article class="is-post-summary">
-						<h3><a href="#">What achievements are there</a></h3>
-						<ul class="meta">
-							<li class="timestamp">9 hours ago</li>
-							<li class="comments"><a href="#">27</a></li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article class="is-post-summary">
-						<h3><a href="#">Can I play w/a controller</a></h3>
-						<ul class="meta">
-							<li class="timestamp">Yesterday</li>
-							<li class="comments"><a href="#">184</a></li>
-						</ul>
-					</article>
-				</li>
 			</ul>
 			<a href="#" class="button button-alt">Bulletin</a>
 		</section>
 	<!-- /Recent Posts -->
 
-	<!-- Something -->
+	<!-- Upcoming Events -->
 		<section>
-			<h2 class="major"><span>Ipsum Dolore</span></h2>
+			<h2 class="major"><span>Upcoming Events</span></h2>
 			<a href="#" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic03.jpg" alt="" /></a>
 			<p>
 				Donec sagittis massa et leo semper scele risque metus faucibus. Morbi congue mattis mi. 
@@ -54,7 +28,7 @@
 			</p>
 			<a href="#" class="button button-alt">Learn more</a>
 		</section>
-	<!-- /something -->
+	<!-- /Upcoming Events -->
 
 	<!-- Something -->
 		<section>

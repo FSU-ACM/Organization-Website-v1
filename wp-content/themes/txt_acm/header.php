@@ -5,6 +5,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="<?php bloginfo('description'); ?>" />
 <meta name="keywords" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
 <noscript>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core.css" />
@@ -14,12 +15,40 @@
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-desktop.css" />
 </noscript>
+
+<!-- STATIC DESKTOP STYLESHEETS -->
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core-desktop.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core-1200px.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core-noscript.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-desktop.css" />
+<!-- /STATIC DESKTOP STYLESHEETS -->
+
+<!-- RESPONSIVE STYLESHEETS -->
+<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core-responsive.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/txt-acm-responsive.css" /> -->
+<!-- /RESPONSIVE STYLESHEETS -->
+
 <!--[if lte IE 9]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie9.css" /><![endif]-->
 <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie8.css" /><![endif]-->
 <!--[if lte IE 7]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie7.css" /><![endif]-->
 </head>
 
 <body class="homepage">
+
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=282074888603638";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
 <!-- Header -->
 	<header id="header">
@@ -52,4 +81,5 @@
 		</section>
 	</div>
 <!-- /Banner -->
-<?php } ?>						
+<?php } ?>
+
