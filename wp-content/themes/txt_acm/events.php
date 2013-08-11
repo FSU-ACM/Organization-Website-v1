@@ -21,15 +21,35 @@ get_header(); ?>
 		<div class="9u mobileUI-main-content">
 			<div class="content content-left">
 
-				<article class="is-page-content">
+				<style type="text/css">
+					#events-header {
+						position: relative;
+					}
+					ul.event-links {
+						position: absolute;
+					}
+					.event-links li {
+						display: inline;
+						padding: 10px 60px;
+					}
+					.event-links span {
+						font-size: 36px;
+					}
+				</style>
 
+				<article id="events-header" class="is-page-content">
 					<!-- page/post header -->
 						<header>
 							<h2>ACM@FSU Events</h2>
 							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'page_byline', TRUE ); ?></span>
 						</header>
+						<ul class="event-links">
+						<li><a href="acm_events/calendar/" class="blog_title"><i class="icon-calendar"></i> Calendar</a></li> <span>|</span>
+						<li><a href="acm_events/photos/" class="blog_title"><i class="icon-camera"></i> Photos</a></li> <span>|</span>
+						<li><a href="acm_events/results/" class="blog_title"><i class="icon-trophy"></i></i> Contests</a></li>
+						</ul>
 				</article>
-
+				<br />
 		<!-- Blog -->
 				<h2 class="major" style="margin:0;"><span>what's happening</span></h2>			
 				<br />
@@ -54,7 +74,7 @@ get_header(); ?>
 							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
 							<ul class="meta">
 								<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
-								<li class="comments"><a href="#">1,024</a></li>
+								<li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>
 							</ul>
 						</header>
 

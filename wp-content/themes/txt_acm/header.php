@@ -23,6 +23,8 @@
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core-noscript.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-desktop.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap/css/bootstrap.min.css" />
 <!-- /STATIC DESKTOP STYLESHEETS -->
 
 <!-- RESPONSIVE STYLESHEETS -->

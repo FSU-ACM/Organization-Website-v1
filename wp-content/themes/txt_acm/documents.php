@@ -22,7 +22,6 @@ get_header(); ?>
 			<div class="content content-left">
 
 				<article class="is-page-content">
-
 					<!-- page/post header -->
 						<header>
 							<h2>ACM@FSU Documents</h2>
@@ -30,7 +29,19 @@ get_header(); ?>
 						</header>
 				</article>
 
-		<!-- Blog -->
+				<style type="text/css">
+					.blog_title {
+						font-size: 40px!important;
+					}
+					.is-page-content header {
+						margin-bottom: 0;
+					}
+					.doc-title {
+						margin-bottom: 20px!important;
+					}
+				</style>
+
+		<!-- Docs -->
 				<h2 class="major" style="margin:0;"><span>document archive</span></h2>			
 				<br />
 				<?php 
@@ -39,39 +50,21 @@ get_header(); ?>
   					  $wp_query = new WP_Query();
   					  $args = array(
   					  		'post_type' => array('documents'), 
-    						'posts_per_page' => 3,
+    						'posts_per_page' => -1,
     						'ignore_sticky_posts' => 1,
     						'paged' => $paged
     					);
 					  $wp_query->query( $args ); ?>
 				<?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 		
-					<article id="post-<?php the_ID(); ?>" class="is-page-content post">
-
+					<article id="post-<?php the_ID(); ?>" class="is-page-content post doc-title">
 					<!-- post header -->
 						<header>
-							<a href="<?php the_permalink(); ?>" class="blog_title"><?php echo get_the_title(); ?></a>
-							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
+							<a href="<?php the_permalink(); ?>" class="blog_title"><i class="icon-file-text-alt"></i> <?php echo get_the_title(); ?></a>
 						</header>
-
-				<!-- Content -->
-					<!-- post/page thumbnail -->
-					<?php if (has_post_thumbnail( $post->ID ) ):
-						  	$img_id = get_post_thumbnail_id($post->ID);
-						  	$image = wp_get_attachment_image_src($img_id, $optional_size);
-						  	$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
-					?>
-						<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px"/></span>
-					<?php endif; ?>
-					<!-- /post thumbnail -->
-                        
-                        <?php the_excerpt(); ?>
-
 					</article>
-
-				<!-- /Content -->
 				
-        <!-- /Blog -->
+        <!-- /Docs -->
 <?php endwhile;?>
 
 	<center>
