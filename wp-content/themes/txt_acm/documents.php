@@ -51,6 +51,7 @@ get_header(); ?>
 					<!-- post header -->
 						<header>
 							<a href="<?php the_permalink(); ?>" class="blog_title"><?php echo get_the_title(); ?></a>
+							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
 						</header>
 
 				<!-- Content -->
