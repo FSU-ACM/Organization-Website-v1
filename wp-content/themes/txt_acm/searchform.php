@@ -1,5 +1,3 @@
-<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-
 <style type="text/css">
 	#s {
 		height: 30px;
@@ -11,8 +9,7 @@
         height: inherit !important;
     }
 </style>
-
-<form>
+<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
     <div class='input-append'>
         <input name="s" id="s" placeholder="Search..." />
         <button type="submit" id="searchsubmit" class='btn add-on'>
