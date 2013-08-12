@@ -1,10 +1,19 @@
 <!-- Sidebar -->
 
-<!-- Recent Posts -->
-		<section>
+<style type="text/css">
+	
+	#sidebar-search {
+		margin-bottom: 2.9em!important;
+	}
+
+</style>
+
+<!-- Search Form -->
+		<section id="sidebar-search">
 			<h2 class="major"><span>Search</span></h2>
 			<?php get_search_form(); ?>
 		</section>
+
 
 	<!-- Recent Posts -->
 		<section>
@@ -67,30 +76,5 @@
 		</section>
 	<!-- /Upcoming Events -->
 
-
-	<?php $wp_query = null; $wp_query = $temp; ?>
-	<!-- Something -->
-		<section style="display:none;">
-
-			<?php 
-		      	  $temp = $wp_query; 
-				  $wp_query = null; 
-				  $wp_query = new WP_Query();
-				  $args = array(
-				  	'post_type' => array('post'), 
-					'posts_per_page' => 1,
-					'ignore_sticky_posts' => 0,
-					'paged' => False );
-				  $wp_query->query( $args ); ?>
-
-			<?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
-
-			<h2 class="major"><span><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></span></h2>
-			<p><?php the_excerpt(); ?></p>
-			<a href="<?php the_permalink(); ?>" class="button button-alt">Read More</a>
-
-			<?php endwhile;?>
-		</section>
-	<!-- /something -->
 
 <!-- /Sidebar -->

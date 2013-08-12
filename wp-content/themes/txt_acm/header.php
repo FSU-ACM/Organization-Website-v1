@@ -5,7 +5,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="<?php bloginfo('description'); ?>" />
 <meta name="keywords" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
 <noscript>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core.css" />
