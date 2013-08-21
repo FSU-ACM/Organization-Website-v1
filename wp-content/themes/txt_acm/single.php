@@ -6,10 +6,6 @@
 * @since TXT 1.0
 */
 
-/*
-Template Name: No Sidebar
-*/
-
 get_header(); ?>
 
 <!-- Main -->
@@ -71,7 +67,7 @@ get_header(); ?>
                             <div class="row">
                                 <div class="9u">
                                     <div class="content content-left">
-                                    		<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="863"></div>
+                                    		<?php echo do_shortcode("[fbcomments url="the_permalink()" width=\"863\" count=\"off\" num=\"10\"]"); ?>
                                     </div>
                                 </div>
                                 <div class="3u">

@@ -1,13 +1,5 @@
 <!-- Sidebar -->
 
-<style type="text/css">
-	
-	#sidebar-search {
-		margin-bottom: 2.9em!important;
-	}
-
-</style>
-
 <!-- Search Form -->
 		<section id="sidebar-search">
 			<h2 class="major"><span>Search</span></h2>

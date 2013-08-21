@@ -32,17 +32,19 @@ get_header(); ?>
 
 				<?php if ( have_posts() ) : ?>
 
-					<!-- page/post header -->
 						<header>
 							<h2><?php printf( __( 'Search Results for: %s' ), '<span class="search-query">' . get_search_query() . '</span>'); ?></h2>
 						</header>
+				</article>
+				<h2 class="major" style="margin:0;"><span>Found <?php echo $total_results; ?> Results</span></h2>
 				
 				<?php else : ?>
 
-					<!-- page/post header -->
 						<header>
 							<h2>Sorry. No matches found.</h2>
 						</header>
+				</article>
+				<h2 class="major" style="margin:0;"></h2>
 
 				<?php endif; ?>
 
@@ -51,9 +53,6 @@ get_header(); ?>
 					$total_results = $wp_query->found_posts;
 				?>
 
-				</article>
-
-				<h2 class="major" style="margin:0;"><span>Found <?php echo $total_results; ?> Results</span></h2>
 				<br />
 				<!-- Content -->
 					<article class="is-page-content">
@@ -79,7 +78,7 @@ get_header(); ?>
 					<?php endwhile; else: ?>
 
 						<section>
-							<p>Sorry, no posts matched your criteria.</p>
+							<p>No posts matched your search criteria.</p>
 						</section>
 
 					<?php endif; ?>
