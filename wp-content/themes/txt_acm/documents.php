@@ -51,6 +51,7 @@ get_header(); ?>
   					  $args = array(
   					  		'post_type' => array('documents'), 
     						'posts_per_page' => -1,
+    						'order' => 'ASC',
     						'ignore_sticky_posts' => 1,
     						'paged' => $paged
     					);

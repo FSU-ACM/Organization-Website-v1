@@ -170,7 +170,7 @@ get_header(); ?>
                                                     <span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
                                                     <ul class="meta">
                                                         <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
-                                                        <li class="comments"><a href="#">8</a></li>
+                                                        <li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>
                                                     </ul>
                                                 </header>
                                                 <?php if (has_post_thumbnail( $post->ID ) ):
@@ -215,7 +215,7 @@ get_header(); ?>
                                                         <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
                                                         <ul class="meta">
                                                             <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
-                                                            <li class="comments"><a href="#">34</a></li>
+                                                            <li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>
                                                         </ul>
                                                     </article>
                                                 </li>

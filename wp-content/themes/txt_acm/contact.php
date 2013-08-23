@@ -60,23 +60,72 @@ get_header(); ?>
                         </div>
 					</section>
 
+					<style type="text/css">
+
+					#contact-form_216 {
+						margin-bottom: 1em;
+					}
+					.wpcf7-form-control.wpcf7-textarea {
+						height: 100px;
+					}
+					.wpcf7-response-output.wpcf7-validation-errors {
+						font-size: 13px;
+						color: #fff;
+						line-height: 15px;
+						background: #ff0000;
+						padding: 15px;
+						border-radius: 5px;
+						width: 208px;
+					}
+					.wpcf7-response-output.wpcf7-mail-sent-ok {
+						font-size: 13px;
+						color: #fff;
+						line-height: 15px;
+						background: #008000;
+						padding: 15px;
+						border-radius: 5px;
+						width: 208px;
+					}
+
+					/* GLOBAL FORM STYLES */
+					input[type="text"], input[type="email"] {
+						height: 40px;
+					}
+					.wpcf7-form-control.wpcf7-submit.button.button-alt {
+						height: 40px;
+						line-height: 3px;
+						width: 122%;
+					}
+					.wpcf7-not-valid-tip-no-ajax {
+						font-size: 12px;
+						color: #ff0000;
+					}
+
+					</style>
+
 					<section>
-						<h3>for other inquiries</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus 
-							justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis, 
-							ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet 
-							vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor. 
-							Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis 
-							rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien. 
-							Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi. 
-							Phasellus sed nisl vitae.
-						</p>
-						<p>
-							Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna, 
-							fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium. 
-							Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu. 
-						</p>
+						<div class="row">
+                            <div class="9u" style="width:65%;">
+                                <div class="content content-left" style="text-align:left;">
+        							<h3>for other inquiries</h3>
+                                        <p>
+                                            Students and faculty should already know; <strong>we're here to help</strong>. ACM serves as
+                                            both a social club and incubator. We want everyone to know that we have an open door policy.
+                                            So if you're looking for a tutor for COP-3330 or you need help finding your next undergraduate
+                                            RA, we are the go to people for those questions. <br />
+                                            If you have an idea for how we can improve ACM or it's events, or if you have an idea for a 
+                                            great workshop, we'd love to hear that as well!
+                                        </p>
+                                </div>
+                            </div>
+                            <div class="3u">
+                                <div id="floater" style="padding:20%;margin-top: -56px;"> 
+									<div class="sidebar">
+										<h3>Contact Us</h3>
+										<?php echo do_shortcode('[contact-form-7 id="216" title="Contact Form"]'); ?></div>
+                                </div>
+                            </div>
+                        </div>
 					</section>
 
 				</article>

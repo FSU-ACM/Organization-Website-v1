@@ -28,6 +28,9 @@ get_header(); ?>
 					.the-excerpt p{
 						margin-top: -2em;
 					}
+					.error-msg {
+						font-size: 30px;
+					}
 				</style>
 
 				<?php if ( have_posts() ) : ?>
@@ -36,7 +39,15 @@ get_header(); ?>
 							<h2><?php printf( __( 'Search Results for: %s' ), '<span class="search-query">' . get_search_query() . '</span>'); ?></h2>
 						</header>
 				</article>
-				<h2 class="major" style="margin:0;"><span>Found <?php echo $total_results; ?> Results</span></h2>
+
+				<?php
+					global $wp_query;
+					$total_results = $wp_query->found_posts;
+				?>
+
+				<h2 class="major" style="margin:0;">
+					<span>Found <?php echo $total_results; ?> Result<?php echo ($total_results > 1) ? 's': ''; ?></span>
+				</h2>
 				
 				<?php else : ?>
 
@@ -48,11 +59,6 @@ get_header(); ?>
 
 				<?php endif; ?>
 
-				<?php
-					global $wp_query;
-					$total_results = $wp_query->found_posts;
-				?>
-
 				<br />
 				<!-- Content -->
 					<article class="is-page-content">
@@ -61,32 +67,58 @@ get_header(); ?>
 					<!-- page/post header -->
 						<header>
 							<a href="<?php the_permalink(); ?>" class="blog_title"><?php echo get_the_title(); ?></a>
+							<span class="blog_subtitle"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
+							<ul class="meta">
+								<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
+								<li class="comments"><a href="<?php the_permalink(); ?>">
+									<fb:comments-count href="<?php the_permalink(); ?>"></fb:comments-count>
+								</a></li>
+								<li class="post_type"><?php echo 'Posted in  ';
+															if (get_post_type( get_the_ID() ) == 'post') {
+																echo 'Blog, ';
+																echo 'under ';
+																the_category(', ');
+															}
+															elseif (get_post_type( get_the_ID() ) == 'job_posts') echo 'Jobs';
+													  ?>
+								</li>
+							</ul>
 						</header>
 
-						<!-- post/page thumbnail -->
-						<?php if (has_post_thumbnail( $post->ID ) ):
-							  	$img_id = get_post_thumbnail_id($post->ID);
-							  	$image = wp_get_attachment_image_src($img_id, $optional_size);
-							  	$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
-						?>
-							<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" width="150px" align="left"/></span>
-
-						<?php endif; ?>
-
-						<span class="the-excerpt"><?php the_excerpt(); ?></span>
-
-					<?php endwhile; else: ?>
-
-						<section>
-							<p>No posts matched your search criteria.</p>
-						</section>
-
+					<!-- post/page thumbnail -->
+					<?php if (has_post_thumbnail( $post->ID ) ):
+						  	$img_id = get_post_thumbnail_id($post->ID);
+						  	$image = wp_get_attachment_image_src($img_id, $optional_size);
+						  	$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+					?>
+						<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px"/></span>
 					<?php endif; ?>
+					<!-- /post thumbnail -->
+                        
+                        <?php the_excerpt(); ?>
 
 					</article>
 
+					<hr>
+
 				<!-- /Content -->
-				
+				<?php endwhile; else: ?>
+
+					<section>
+						<p class="error-msg">No posts matched your search criteria.</p>
+					</section>
+
+				<?php endif; ?>
+
+				<?php if (function_exists("pagination")) {
+		    		pagination($additional_loop->max_num_pages);
+				} ?>
+
+				<?php 
+				  $wp_query = null; 
+				  $wp_query = $temp;  // Reset
+				?>
+			
 			</div>
 		</div>
 

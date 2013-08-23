@@ -526,10 +526,11 @@ Author URI: fsu.acm.oeg
 
 	.pagination 
 	{
-		clear:both;
-		position:relative;
-		line-height:13px;
-		left: 50%;
+		clear: both;
+		line-height: 13px;
+		position: absolute;
+		left: 37.25%;
+
 	}
 	 
 	.pagination span, .pagination a 

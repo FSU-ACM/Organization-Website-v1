@@ -25,10 +25,10 @@
 								<h2 class="major"><span>Get in touch</span></h2>
 								<ul class="contact">
 									<li><a href="https://www.facebook.com/groups/cs.fsu.acm/" class="facebook">Facebook</a></li>
-									<li><a href="http://twitter.com/n33co" class="twitter">Twitter</a></li>
+									<li><a href="http://twitter.com" class="twitter">Twitter</a></li>
 									<li><a href="<?php bloginfo('rss_url'); ?>" class="rss">RSS</a></li>
-									<li><a href="#" class="linkedin">LinkedIn</a></li>
-									<li><a href="#" class="googleplus">Google+</a></li>
+									<li><a href="http://linkedin.com" class="linkedin">LinkedIn</a></li>
+									<li><a href="https://plus.google.com/111107497973315279162" rel="publisher" class="googleplus">Google+</a></li>
 								</ul>
 							</section>
 						<!-- /Contact -->

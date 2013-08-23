@@ -55,7 +55,7 @@ get_header(); ?>
 							<ul class="meta">
 								<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
 								<li class="comments"><a href="<?php the_permalink(); ?>">
-									<!-- <fb:comments-count href="<?php the_permalink(); ?>"></fb:comments-count> -->
+									<fb:comments-count href="<?php the_permalink(); ?>"></fb:comments-count>
 								</a></li>
 								<li class="post_type"><?php echo 'Posted in  ';
 															if (get_post_type( get_the_ID() ) == 'post') {

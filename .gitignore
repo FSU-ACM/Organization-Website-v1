@@ -11,6 +11,8 @@ sitemap.xml
 wp-config.php
 wp-content/cache/
 wp-content/backups/
+wp-content/plugins/
+wp-includes/
 sitemap.xml
 sitemap.xml.gz
 *.sublime-*

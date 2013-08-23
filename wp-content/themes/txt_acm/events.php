@@ -27,6 +27,7 @@ get_header(); ?>
 					}
 					ul.event-links {
 						position: absolute;
+						width: 200%;
 					}
 					.event-links li {
 						display: inline;
@@ -44,9 +45,9 @@ get_header(); ?>
 							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'page_byline', TRUE ); ?></span>
 						</header>
 						<ul class="event-links">
-						<li><a href="acm_events/calendar/" class="blog_title"><i class="icon-calendar"></i> Calendar</a></li> <span>|</span>
-						<li><a href="acm_events/photos/" class="blog_title"><i class="icon-camera"></i> Photos</a></li> <span>|</span>
-						<li><a href="acm_events/results/" class="blog_title"><i class="icon-trophy"></i></i> Contests</a></li>
+						<li><a href="/calendar/" class="blog_title"><i class="icon-calendar"></i> Calendar</a></li> <span>|</span>
+						<li><a href="/photos/" class="blog_title"><i class="icon-camera"></i> Photos</a></li> <span>|</span>
+						<li><a href="/results/" class="blog_title"><i class="icon-trophy"></i></i> Contests</a></li>
 						</ul>
 				</article>
 				<br />

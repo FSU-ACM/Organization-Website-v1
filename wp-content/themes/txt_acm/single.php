@@ -67,7 +67,9 @@ get_header(); ?>
                             <div class="row">
                                 <div class="9u">
                                     <div class="content content-left">
-                                    		<?php echo do_shortcode("[fbcomments url="the_permalink()" width=\"863\" count=\"off\" num=\"10\"]"); ?>
+
+                                    	<?php echo do_shortcode('[fbcomments]'); ?>
+                                    	
                                     </div>
                                 </div>
                                 <div class="3u">
@@ -92,7 +94,7 @@ get_header(); ?>
                                                         <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
                                                         <ul class="meta">
                                                             <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
-                                                            <li class="comments"><a href="#">34</a></li>
+                                                            <li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>
                                                         </ul>
                                                     </article>
                                                 </li>

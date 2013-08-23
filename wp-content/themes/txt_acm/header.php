@@ -6,6 +6,7 @@
 <meta name="description" content="<?php bloginfo('description'); ?>" />
 <meta name="keywords" content="" />
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
 <noscript>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core.css" />
@@ -22,6 +23,7 @@
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core-1200px.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/5grid/core-noscript.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/gce.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-desktop.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap/css/bootstrap.min.css" />
@@ -43,13 +45,13 @@
 
 <!-- <div id="fb-root"></div> -->
 <script>
-// (function(d, s, id) {
-//   var js, fjs = d.getElementsByTagName(s)[0];
-//   if (d.getElementById(id)) return;
-//   js = d.createElement(s); js.id = id;
-//   js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=282074888603638";
-//   fjs.parentNode.insertBefore(js, fjs);
-// }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=282074888603638";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 
 <!-- Header -->
