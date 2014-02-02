@@ -80,12 +80,17 @@ Author URI: fsu.acm.oeg
 			text-decoration: underline;
 		}
 
+		h2 a:hover, h3 a:hover 
+		{
+			color: #540115;
+			text-decoration: none!important;
+		}
+
 	form
 	{
 	}
 	
 		form input,
-		form select,
 		form textarea
 		{
 			-webkit-appearance: none;
@@ -122,6 +127,16 @@ Author URI: fsu.acm.oeg
 	article:last-child
 	{
 		margin-bottom: 0;
+	}
+
+	section.content-section h2 
+	{
+		margin: 0.5em 0 0.2em 0;
+	}
+
+	section.content-section h3 
+	{
+		margin: 0.9em 0 -0.4em 0!important;
 	}
 
 	strong 
@@ -518,6 +533,9 @@ Author URI: fsu.acm.oeg
 	.is-page-content
 	{
 	}
+		.is-page-content p {
+			margin-bottom: 0.5em;
+		}
 
 
 /*********************************************************************************/
@@ -776,3 +794,42 @@ Author URI: fsu.acm.oeg
 		{
 			color: inherit;
 		}
+
+/*********************************************************************************/
+/* Event Alert Box                                                               */
+/*********************************************************************************/
+
+.event-details 
+{
+    background-color: #d9edf7;
+    border: #bce8f1 solid 2px;
+    border-radius: 5px;
+    color: #3a87ad;
+    margin: 15px 0;
+    padding: 0 0 0 15px;
+}
+
+.fb-link 
+{
+    float: right;
+    font-weight: normal;
+    padding: 14px;
+}
+   .fb-link a 
+   {
+       color: #3a87ad;
+   }
+
+.time 
+{
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+}
+
+.location 
+{
+    position: relative;
+    top: 0px;
+}
+

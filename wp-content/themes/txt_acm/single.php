@@ -40,7 +40,7 @@ get_header(); ?>
 					<?php endif; ?>
 					
 					<!-- post/page content -->
-					<section>
+					<section class="content-section">
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 							  	the_content();
 							  endwhile; else: ?>
@@ -80,7 +80,7 @@ get_header(); ?>
                                           $wp_query = null; 
                                           $wp_query = new WP_Query();
                                           $args = array(
-                                                'post_type' => array('post','job_posts', 'documents', 'events'), 
+                                                'post_type' => array('post','job_posts','events'), 
                                                 'posts_per_page' => 5,
                                                 'ignore_sticky_posts' => 1,
                                             );
@@ -91,7 +91,7 @@ get_header(); ?>
                                             <?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
                                                 <li>
                                                     <article class="is-post-summary">
-                                                        <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+                                                        <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                         <ul class="meta">
                                                             <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
                                                             <li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>

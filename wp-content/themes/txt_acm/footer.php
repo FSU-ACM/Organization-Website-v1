@@ -24,10 +24,10 @@
 							<section>
 								<h2 class="major"><span>Get in touch</span></h2>
 								<ul class="contact">
-									<li><a href="https://www.facebook.com/groups/cs.fsu.acm/" class="facebook">Facebook</a></li>
-									<li><a href="http://twitter.com" class="twitter">Twitter</a></li>
+									<li><a href="http://www.facebook.com/groups/cs.fsu.acm/" class="facebook">Facebook</a></li>
+									<li><a href="http://twitter.com/acmatfsu" class="twitter">Twitter</a></li>
 									<li><a href="<?php bloginfo('rss_url'); ?>" class="rss">RSS</a></li>
-									<li><a href="http://linkedin.com" class="linkedin">LinkedIn</a></li>
+									<li><a href="http://www.linkedin.com/pub/acm-fsu/7a/710/875" class="linkedin">LinkedIn</a></li>
 									<li><a href="https://plus.google.com/111107497973315279162" rel="publisher" class="googleplus">Google+</a></li>
 								</ul>
 							</section>
@@ -50,19 +50,28 @@
 <!-- load le javascript -->
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<!-- <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.parallax-1.1.3.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.localscroll-1.2.7-min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.scrollTo-1.4.2-min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarOverlaid=1"></script> -->
+<!-- <script src="<?php echo get_template_directory_uri(); ?>/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarOverlaid=1"></script> -->
 
 <script type="text/javascript">
     $(document).ready(function(){
 			// failing parralax scrool effect
-			$("#banner-wrapper").scroll(function () {
-				s = $("#banner-wrapper").scrollTop();
-				$("#banner-wrapper img").css("-webkit-transform","translateY(" +  (s/5)  + "px)");
-			})
+			// $("#banner-wrapper").scroll(function () {
+			// 	s = $("#banner-wrapper").scrollTop();
+			// 	$("#banner-wrapper img").css("-webkit-transform","translateY(" +  (s/5)  + "px)");
+			// })
+	
+		var isDesktop = (function() {
+		  return !('ontouchstart' in window) || !('onmsgesturechange' in window);
+		})();
 
+		window.isDesktop = isDesktop;
+		// if (isDesktop) { alert("WTF!?"); }
+		
+		if (!isDesktop || navigator.userAgent.match(/(iPod|iPhone|iPad)/) ) {
+			$(window).scroll(function(){
+	    		$("#gold-bar").hide();
+	    	});
+		}
 
         <?php if ( is_page_template('home.php') ) { ?>
 
@@ -109,8 +118,13 @@
 
 	        $("#gold-bar").css("top", "699px");
 
+	        if (!isDesktop || navigator.userAgent.match(/(iPod|iPhone|iPad)/) ) {
+	        	$("#gold-bar").hide();
+	        }
+
 	    });
-	
+
+
 		$(window).scroll(function(){
     		$("#gold-bar").css("top",Math.max(47,699-$(this).scrollTop()));
 
@@ -120,6 +134,10 @@
     
 		$("#gold-bar").css("top", "135px");
 
+		if (!isDesktop || navigator.userAgent.match(/(iPod|iPhone|iPad)/) ) {
+	        	$("#gold-bar").hide();
+	        }
+
     });
 
 		$(window).scroll(function(){
@@ -128,8 +146,9 @@
     	<?php } ?>
 	});
 
-</script>
 
+</script>
+<?php wp_footer(); ?>
 
 </body>
 </html>

@@ -40,7 +40,7 @@ get_header(); ?>
 					<?php endif; ?>
 					
 					<!-- post/page content -->
-					<section>
+					<section class="content-section">
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 							  	the_content();
 							  endwhile; else: ?>

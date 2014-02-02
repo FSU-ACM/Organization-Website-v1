@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-desktop.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/datatables.css" />
 <!-- /STATIC DESKTOP STYLESHEETS -->
 
 <!-- RESPONSIVE STYLESHEETS -->
@@ -39,20 +40,11 @@
 <!--[if lte IE 9]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie9.css" /><![endif]-->
 <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie8.css" /><![endif]-->
 <!--[if lte IE 7]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ie7.css" /><![endif]-->
+
+<?php wp_head(); ?>
 </head>
 
 <body class="homepage">
-
-<!-- <div id="fb-root"></div> -->
-<script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=282074888603638";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
 
 <!-- Header -->
 	<header id="header">

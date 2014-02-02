@@ -92,7 +92,7 @@ function txt_acm_scripts_styles() {
 	/*
 	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
 	 */
-	wp_enqueue_script( 'txt_acm-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true );
+	// wp_enqueue_script( 'txt_acm-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true );
 
 	/*
 	 * Loads our special font CSS file.
@@ -431,16 +431,6 @@ function txt_acm_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'txt_acm_customize_register' );
 
-// /**
-//  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
-//  *
-//  * @since TXT 1.0
-//  */
-// function txt_acm_customize_preview_js() {
-// 	wp_enqueue_script( 'txt_acm-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
-// }
-// add_action( 'customize_preview_init', 'txt_acm_customize_preview_js' );
-
 
 /**
  * Adds byline to pages via admin panel
@@ -595,15 +585,91 @@ function pagination($pages = '', $range = 2)
 
 
 /**
- * Replace Excerpt ellipsis
- * @since TXT 1.0
- */
-function replace_excerpt($content) {
-       return str_replace('[...]',
-               '<span class="more-link"><a href="'. get_permalink() .'">...Continue Reading</a></span>',
-               $content
-       );
+* Replace Excerpt ellipsis
+* @since TXT 1.0
+*/
+// function replace_excerpt($content) {
+//        return str_replace('[...]',
+//                '<span class="more-link"><a href="'. get_permalink() .'">...Continue Reading</a></span>',
+//                $content
+//        );
+// }
+// add_filter('the_excerpt', 'replace_excerpt', 11);
+
+// function excerpt_read_more_link($output) {
+//  global $post;
+//  $output = str_replace('[...]', '', $ouput);
+//  return $output . '<span class="more-link"><a href="'. get_permalink($post->ID) .'">...Continue Reading</a></span>';
+// }
+// add_filter('the_excerpt', 'excerpt_read_more_link');
+
+
+
+/**
+* Remove Admin Bar
+* @since TXT 1.0
+*/
+add_filter('show_admin_bar', '__return_false');
+
+
+/**
+* Document Taxonomy
+* @since TXT 1.0
+*/
+function doc_taxonomy() {  
+   register_taxonomy(  
+    'document_category',  
+    'documents',  
+    array(  
+        'hierarchical' => true,  
+        'label' => 'Doc Categories',  
+        'query_var' => true,  
+        'rewrite' => array('slug' => 'doc-category')  
+    )  
+	);  
+}  
+add_action( 'init', 'doc_taxonomy' );
+
+
+function myfeed_request($qv) {
+	if (isset($qv['feed']) && !isset($qv['post_type']))
+		$qv['post_type'] = array('post','job_posts','events');
+	return $qv;
 }
-add_filter('the_excerpt', 'replace_excerpt');
+add_filter('request', 'myfeed_request');
+
+
+function print_filters_for( $hook = '' ) {
+    global $wp_filter;
+    if( empty( $hook ) || !isset( $wp_filter[$hook] ) )
+        return;
+
+    print '<pre>';
+    print_r( $wp_filter[$hook] );
+    print '</pre>';
+}
+
+
+/**
+* Contest Participant
+* @since TXT 1.0
+*/
+add_role( 'contestant', 'Contestant', array( 'contestant' ) );
+
+if ( current_user_can( 'contestant' ) ) {}
+
+// contestant add fields to the signup form
+function contestABT_register_fields($fields){
+    $fields []= array('teamname'=>'teamname', 'type'=>'text', 'class'=>'input teamname', 'size'=>32, 'label'=>'Your Team\'s Name', 'data-validation'=>'teamname');
+    $fields []= array('teammate'=>'teammate', 'type'=>'text', 'class'=>'input teammate', 'size'=>255, 'label'=>'Team Mate', 'data-validation'=>'teammate');
+    $fields []= array('teammate_email'=>'teammate_email', 'type'=>'text', 'class'=>'input teammate_email', 'size'=>255, 'label'=>'Team Mate\'s Email', 'data-validation'=>'teammate_email');
+
+    // set name required
+    $fields[3]['data-validation'] = array('required', 'string');
+
+    return $fields;
+}
+add_filter('abt_custom_register_fields', 'contestABT_register_fields');
+
 
 

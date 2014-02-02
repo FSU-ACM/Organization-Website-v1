@@ -76,7 +76,7 @@ get_header(); ?>
 						  	$image = wp_get_attachment_image_src($img_id, $optional_size);
 						  	$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
 					?>
-						<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px"/></span>
+						<a href="<?php the_permalink(); ?>"><span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px"/></span></a>
 					<?php endif; ?>
 					<!-- /post thumbnail -->
                         

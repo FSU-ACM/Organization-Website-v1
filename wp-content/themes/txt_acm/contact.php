@@ -95,6 +95,7 @@ get_header(); ?>
 						height: 40px;
 						line-height: 3px;
 						width: 122%;
+                        border: none;
 					}
 					.wpcf7-not-valid-tip-no-ajax {
 						font-size: 12px;

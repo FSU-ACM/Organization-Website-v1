@@ -27,7 +27,7 @@
 
 				<li>
 					<article class="is-post-summary">
-						<h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+						<a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
 						<ul class="meta">
 							<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
 							<li class="comments"><a href="<?php the_permalink(); ?>">
@@ -62,8 +62,13 @@
 
 			<?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-			<a href="<?php the_permalink(); ?>" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/pic03.jpg" alt="" /></a>
-			<h2><?php echo get_the_title(); ?></h2>
+			<a href="<?php the_permalink(); ?>" class="image image-full"><img src="<?php echo get_template_directory_uri(); ?>/images/curious_Preston.jpg" alt="Curious Preston" /></a>
+			<a href="<?php the_permalink(); ?>"><h2><?php echo get_the_title(); ?></h2></a>
+			<ul class="meta">
+				<li class="timestamp" style="font-size:20px;">
+					<?php echo date("D, M d", get_post_meta( get_the_ID(), 'events_startdate', TRUE )); ?> at 
+					<?php echo date("h:i a", get_post_meta( get_the_ID(), 'events_startdate', TRUE )); ?></li>
+			</ul>
 			<?php endwhile;?>
 		</section>
 	<!-- /Upcoming Events -->

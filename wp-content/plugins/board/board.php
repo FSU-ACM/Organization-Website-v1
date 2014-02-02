@@ -103,7 +103,7 @@ function board_member_meta_box( $post )
         <label for="member_affiliation">Member's Affiliation</label>  
         <select name="member_affiliation" id="member_affiliation">
              <option value="ACM" <?php selected( $affiliation, 'ACM' ); ?>>ACM</option>
-             <option value="ACM[W]" <?php selected( $affiliation, 'ACM[W]' ); ?>>ACM[W]</option>
+             <option value="ACM-W" <?php selected( $affiliation, 'ACM-W' ); ?>>ACM-W</option>
         </select>
     </p>
     <p>

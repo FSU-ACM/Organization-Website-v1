@@ -14,25 +14,25 @@ function create_document() {
     register_post_type( 'documents',
         array(
             'labels' => array(
-                'name' => 'Documents',
-                'singular_name' => 'Document',
+                'name' => 'Docs Pages',
+                'singular_name' => 'Doc',
                 'add_new' => 'Add New',
-                'add_new_item' => 'Add New Document',
+                'add_new_item' => 'Add New Document Page',
                 'edit' => 'Edit',
-                'edit_item' => 'Edit Document',
-                'new_item' => 'New Document',
+                'edit_item' => 'Edit Document Page',
+                'new_item' => 'New Document Page',
                 'view' => 'View',
-                'view_item' => 'View Document',
-                'search_items' => 'Search Documents',
-                'not_found' => 'No Documents found',
-                'not_found_in_trash' => 'No Documents found in Trash',
-                'parent' => 'Parent Document'
+                'view_item' => 'View Document Page',
+                'search_items' => 'Search Document Pages',
+                'not_found' => 'No Document Pages found',
+                'not_found_in_trash' => 'No Document Pages found in Trash',
+                'parent' => 'Parent Document Page'
             ),
  
             'public' => true,
             'menu_position' => 20,
             'supports' => array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
-            'taxonomies' => array( '' ),
+            'taxonomies' => array('doc_taxonomy'),
             'menu_icon' => plugins_url( 'images/document-invoice.png', __FILE__ ),
             'has_archive' => true
         )

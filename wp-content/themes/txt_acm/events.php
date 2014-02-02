@@ -27,7 +27,8 @@ get_header(); ?>
 					}
 					ul.event-links {
 						position: absolute;
-						width: 200%;
+						width: 100%;
+						margin: 2% 0;
 					}
 					.event-links li {
 						display: inline;
@@ -47,7 +48,7 @@ get_header(); ?>
 						<ul class="event-links">
 						<li><a href="/calendar/" class="blog_title"><i class="icon-calendar"></i> Calendar</a></li> <span>|</span>
 						<li><a href="/photos/" class="blog_title"><i class="icon-camera"></i> Photos</a></li> <span>|</span>
-						<li><a href="/results/" class="blog_title"><i class="icon-trophy"></i></i> Contests</a></li>
+						<li><a href="/contests/" class="blog_title"><i class="icon-trophy"></i></i> Contests</a></li>
 						</ul>
 				</article>
 				<br />
@@ -72,7 +73,7 @@ get_header(); ?>
 					<!-- post header -->
 						<header>
 							<a href="<?php the_permalink(); ?>" class="blog_title"><?php echo get_the_title(); ?></a>
-							<span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
+							<!-- <span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span> -->
 							<ul class="meta">
 								<li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
 								<li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>
@@ -86,12 +87,12 @@ get_header(); ?>
 						  	$image = wp_get_attachment_image_src($img_id, $optional_size);
 						  	$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
 					?>
-						<span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px"/></span>
+						<a href="<?php the_permalink(); ?>"><span class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px"/></span></a>
 					<?php endif; ?>
 					<!-- /post thumbnail -->
                         
                         <?php the_excerpt(); ?>
-                    <a href="<?php the_permalink(); ?>" class="button">View More</a>
+                    <!-- <a href="<?php the_permalink(); ?>" class="button">View More</a> -->
 
 					</article>
 

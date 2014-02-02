@@ -166,7 +166,7 @@ get_header(); ?>
                                         <!-- Featured Post -->
                                             <article class="is-post">
                                                 <header>
-                                                    <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+                                                    <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                     <span class="byline"><?php echo get_post_meta( get_the_ID(), 'post_byline', TRUE ); ?></span>
                                                     <ul class="meta">
                                                         <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
@@ -181,7 +181,7 @@ get_header(); ?>
                                                 <a href="<?php the_permalink(); ?>" class="image image-full"><img src="<?php echo $image[0]; ?>" alt="<?php echo $alt_text; ?>" height="250px" /></a>
                                                 <?php endif; ?>
 
-                                                <p><?php the_excerpt(); ?></p>
+                                                <p><?php  the_excerpt(); ?></p>
                                                 
                                                 <a href="<?php the_permalink(); ?>" class="button">Continue Reading</a>
                                             </article>
@@ -201,7 +201,7 @@ get_header(); ?>
                                           $wp_query = null; 
                                           $wp_query = new WP_Query();
                                           $args = array(
-                                                'post_type' => array('post','job_posts', 'documents', 'events'), 
+                                                'post_type' => array('post','job_posts','events'), 
                                                 'posts_per_page' => 5,
                                                 'ignore_sticky_posts' => 1,
                                             );
@@ -212,7 +212,7 @@ get_header(); ?>
                                             <?php while( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
                                                 <li>
                                                     <article class="is-post-summary">
-                                                        <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+                                                        <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                         <ul class="meta">
                                                             <li class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></li>
                                                             <li class="comments"><a href="<?php the_permalink(); ?>"><fb:comments-count href=<?php the_permalink(); ?>></fb:comments-count></a></li>
@@ -222,7 +222,7 @@ get_header(); ?>
                                             <?php endwhile;?>
                                             <?php $wp_query = null; $wp_query = $temp; ?>
                                             </ul>
-                                            <a href="<?php echo site_url(); ?>/bulletin/" class="button button-alt">Browse Bulletin</a>
+                                            <a href="<?php echo site_url(); ?>/bulletin/" class="button button-alt">ACM Bulletin</a>
                                         <!-- /Archives -->
 
                                     </div>
@@ -244,6 +244,8 @@ get_header(); ?>
 
     </div>
 </div>
+
+<?php //print_filters_for( 'the_excerpt' ); ?>
 <!-- /Main -->
 
 <?php get_footer(); ?>
